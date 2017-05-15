@@ -90,13 +90,12 @@ WSGI_APPLICATION = 'PetStore.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'tapaloeil$PetStore',
-        'USER': 'tapaloeil',
-        'PASSWORD': 'Accenture1',
-        'HOST': 'tapaloeil.mysql.pythonanywhere-services.com',
-        'PORT': '3306',
+    'default':{
+        'ENGINE':'django.db.backends.mysql',
+        'NAME':'tapaloeil$PetStore',
+        'USER':'tapaloeil',
+        'PASSWORD':'Accenture1',
+        'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
     }
 }
 
