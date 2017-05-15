@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'djmoney',
     'braces',
     'jet',
+    'django_dropbox',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,6 +128,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+DROPBOX_CONSUMER_KEY = 'o7y6pfxzp1s2dvc'
+DROPBOX_CONSUMER_SECRET = 'no7sj6o6hpxc9x2'
+DROPBOX_ACCESS_TOKEN = 'CrSvO16s7IAAAAAAAAAAB6FyUUawRCO7T7gNQTo1OJIP1NSxITKuOUR0bSWotwnP'
+DROPBOX_ACCESS_TOKEN_SECRET = 'xxx'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
