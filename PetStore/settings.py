@@ -94,7 +94,7 @@ DATABASES = {
         'ENGINE':'django.db.backends.mysql',
         'NAME':'tapaloeil$PetStore',
         'USER':'tapaloeil',
-        'PASSWORD':'Accenture1',
+        'PASSWORD':'Mars!2017',
         'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
     }
 }
