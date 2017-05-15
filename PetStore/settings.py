@@ -23,9 +23,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '9mzj3@i%b^t2-rjh(%qdhupt=22kcburqyg7agt0(%vozgjxmt'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['127.0.0.1', '.pythonanywhere.com']
 
 LOGIN_REDIRECT_URL='/'
 
@@ -36,6 +33,7 @@ CURRENCIES = ('USD','EUR','CNY','HKD', 'GBP','JPY')
 # Application definition
 
 INSTALLED_APPS = [
+#    'storages',
     'moneyed',
     'djmoney',
     'braces',
@@ -55,7 +53,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
+    #'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -133,15 +132,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'cdn/static')
-
+#STATICFILES_DIRS = [    os.path.join(BASE_DIR, 'static'),]
+STATIC_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), 'staticfiles')
 MEDIA_URL = "/media/"
 #MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
 
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'cdn/media')
+MEDIA_ROOT = os.path.join(os.path.dirname(PROJECT_ROOT), 'mediafiles')
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -257,6 +255,10 @@ DATABASES['default'] = dj_database_url.config()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
+
+#DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 DEBUG = False
 
