@@ -33,3 +33,117 @@ h1, h2, h3, h4 {
 .animal h1 a, .animal h1 a:visited {
     color: #000000;
 }
+
+.card-block {
+    padding:0;
+}
+
+.card {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: #fff;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.card-img-top {
+    border-top-right-radius: calc(.25rem - 1px);
+    border-top-left-radius: calc(.25rem - 1px);
+    max-width: 240px;
+}
+
+.thumb{
+    padding-bottom: 10px;
+}
+
+.list-group-item-card{
+    position: relative;
+    display: block;
+    padding: 0px 10px;
+    margin-bottom: -1px;
+    /* background-color: #fff; */
+    border: 0px solid #ddd;
+}
+
+.list-group-item-card>.badge {
+    float: right;
+}
+
+.list-group-card{
+    margin:0;
+    padding:0;
+}
+
+.card-title{
+    padding-left: 10px;
+    padding-right: 10px
+}
+
+.pricetag{
+    white-space: nowrap;
+    position: relative;
+    margin: 0 5px 0 10px;
+    display: inline-block;
+    height: 25px;
+    border-radius: 0 5px 5px 0;
+    padding: 0 5px 0 10px;
+    background: #E8EDF0;
+    border: 0 solid #C7D2D4;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    color: #999;
+    line-height: 23px;
+    font-size: small;
+}
+
+.sellprice{
+    background: #9fffa2;
+}
+
+.buyprice{
+    background: #ffbe90;
+}
+
+.pricetag:before{
+    position:absolute;
+    content:"\25CF";
+    color:white;
+    text-shadow: 0 0 1px #333;
+    font-size:11px;
+    line-height:0px;
+    text-indent:12px;
+    left:-14px;
+    top:-2px;
+    width: 1px;
+    height:0px;
+    border-right:14px solid #E8EDF0;
+    border-top:  13px solid transparent;
+    border-bottom:  13px solid transparent;
+}
+
+.sellprice:before{
+    border-right:14px solid #9fffa2;
+}
+
+.buyprice:before{
+    border-right:14px solid #ffbe90;
+}
+
+.alignright{
+    float: right;
+    position: absolute;
+    top: 0px;
+    right: 7px;
+}
+
+.badge-tag{
+    float:none!important;
+}

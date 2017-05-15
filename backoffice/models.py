@@ -5,6 +5,7 @@ from django_countries.fields import CountryField
 from djmoney.models.fields import MoneyField
 from measurement.measures import Weight
 from django_measurement.models import MeasurementField
+from taggit.managers import TaggableManager
 
 class ProductBrand(models.Model):
     Name=models.CharField(max_length=200,verbose_name='Marque', blank=True,null=True)
@@ -56,6 +57,7 @@ class Product(models.Model):
     Description = HTMLField(
         blank=True,
         null=True)
+    Tags=TaggableManager(blank=True)
     MainPhoto = models.ForeignKey(
         "ProductImage", related_name='+', blank=True, null=True
         )
@@ -72,14 +74,14 @@ class Product(models.Model):
         default_currency='EUR',
         blank=True,
         null=True,
-        verbose_name="Prix d'achat")
+        verbose_name="Prix d'achat (€)")
     SellPrice = MoneyField(
         max_digits=10,
         decimal_places=2, 
         default_currency='EUR',
         blank=True,
         null=True,
-        verbose_name='Prix de vente')
+        verbose_name='Prix de vente (€)')
 
     def __str__(self):
         return self.ProductName

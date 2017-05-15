@@ -43,13 +43,17 @@ class ProductLinkInline(CompactInline):
 
 class ProductAdmin(admin.ModelAdmin):
     actions = [duplicate_product]
-    list_filter = ('ProductType','ProductSubType','Brand','BuyPrice')
-    search_fields = ['ProductName','ProductType','ProductSubType','Brand','Weight']
-    list_display=("ProductName","ProductType","ProductSubType","Brand","BuyPrice","SellPrice","Weight")
+    list_filter = ('Tags','ProductType','ProductSubType','Brand','BuyPrice')
+    search_fields = ['ProductName',]
+    list_display=("ProductName","tag_list","ProductType","ProductSubType","Brand","BuyPrice","SellPrice","Weight")
     inlines = (ProductImageInline,ProductLinkInline,)
     js=['tiny_mce/tiny_mce.js',]
 
+    def get_queryset(self, request):
+        return super(ProductAdmin, self).get_queryset(request).prefetch_related('Tags')
 
+    def tag_list(self, obj):
+        return u", ".join(o.name for o in obj.Tags.all())
 
 
 admin.site.register(Product, ProductAdmin)

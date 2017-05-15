@@ -4,16 +4,71 @@
 <div class="col-sm-12">
     <div class='row'>
     {% for product in products %}
-        <div class="col-sm-6">
-            <div class="thumbnail">
-                <div class="caption">
-                    <h3>{{ product.ProductName }}</h3>
-                    <p>{{ product.Description|safe }}</p>
-                </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <div class="card" >
+            {% if product.MainPhoto %}
+              <img class="card-img-top img-responsive" src='{{ product.MainPhoto.image.url }}' alt="Card image cap">
+            {% endif %}
+              <div class="card-block">
+                <h4 class="card-title">{{ product.ProductName }}</h4>
+                <ul class="list-group-card">
+                    <li class="list-group-item-card justify-content-between">
+                            Brand :
+                            <span class="badge badge-default badge-pill">{{ product.Brand }}</span>
+                    </li>
+                    <li class="list-group-item-card justify-content-between">
+                        Buying Price :
+                        <div class="alignright">
+                            <span class="pricetag buyprice">{{ product.BuyPrice }}</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item-card justify-content-between">
+                        Selling Price : 
+                        <div class="alignright">
+                            <span class="pricetag sellprice">{{ product.SellPrice }}</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item-card justify-content-between">
+                        {% for Tag in product.Tags.all %}
+                            <span class="badge badge-pill badge-info badge-tag">{{ Tag }}</span>
+                        {% endfor %}
+                        
+                    </li>
+                </ul>
+              </div>
             </div>
         </div>
-    {% cycle "" "</div><div class='row'>" %}
+    {% cycle "" "" "" "</div><div class='row'>" %}
     {% endfor %}
     </div>
 </div>
+
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    {% if products.has_previous == False %}
+        <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+    {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ products.previous_page_number }}" tabindex="-1">Previous</a>
+        </li>    
+    {% endif %}
+    {% for i in products.paginator.page_range %}
+        {% if products.number == i %}
+            <li class="page-item active">
+                <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
+            </li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+    {% endfor %}
+    {% if products.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">Next</a></li>
+    {% else %}
+      <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+    {% endif %}
+</nav>
 {% endblock content %}
+
+

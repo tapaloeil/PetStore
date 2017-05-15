@@ -3,8 +3,22 @@ from django.utils import timezone
 from .models import Product
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 def p_list(request):
     p_list = Product.objects.all()
-    return render(request, 'backoffice/p_list.html',{'products':p_list})
+
+    p_list = Product.objects.all()
+    paginator = Paginator(p_list, 12)
+
+    page = request.GET.get('page')
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        products = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        products = paginator.page(paginator.num_pages)
+    return render(request, 'backoffice/p_list.html',{'products':products})
