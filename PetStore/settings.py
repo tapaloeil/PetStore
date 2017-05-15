@@ -33,7 +33,6 @@ CURRENCIES = ('USD','EUR','CNY','HKD', 'GBP','JPY')
 # Application definition
 
 INSTALLED_APPS = [
-    'mysqlclient',
     'storages',
     'moneyed',
     'djmoney',
