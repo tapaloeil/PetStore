@@ -1,6 +1,4 @@
 # Ignore everything in this directory
-/*
-!/media
-!/static
+*
 # Except this file
 !.gitignore
