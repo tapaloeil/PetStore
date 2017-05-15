@@ -1,1 +1,1 @@
-web: gunicorn backoffice.wsgi
+web: gunicorn PetStore.wsgi
