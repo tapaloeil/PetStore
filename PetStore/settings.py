@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django_countries',
     'measurement',
     'django_measurement',
+    'taggit',
     'backoffice',
 ]
 
