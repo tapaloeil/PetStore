@@ -7,7 +7,7 @@
         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
             <div class="card" >
             {% if product.MainPhoto %}
-              <img class="card-img-top img-responsive" src='{{ product.MainPhoto.image.url }}' alt="Card image cap">
+              <img class="card-img-top img-responsive shake" src='{{ product.MainPhoto.image.url }}' alt="Card image cap">
             {% endif %}
               <div class="card-block">
                 <h4 class="card-title">{{ product.ProductName }}</h4>
@@ -20,14 +20,14 @@
                     <li class="list-group-item-card justify-content-between">
                         Buying Price :
                         <div class="alignright">
-                            <span class="pricetag buyprice">{{ product.BuyPrice }}</span>
+                            <span class="pricetag buyprice">{{ product.MainProductReference.BuyPrice }}</span>
                         </div>
                     </li>
                     {% endif %}
                     <li class="list-group-item-card justify-content-between">
                         Selling Price : 
                         <div class="alignright">
-                            <span class="pricetag sellprice">{{ product.SellPrice }}</span>
+                            <span class="pricetag sellprice">{{ product.MainProductReference.SellPrice }}</span>
                         </div>
                     </li>
                     <li class="list-group-item-card justify-content-between">
