@@ -23,7 +23,7 @@ admin.site.site_title='PetStore Administration'
 
 urlpatterns = [
     url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
-    url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls,name='admin'),
     url(r'', include('backoffice.urls')),
     url(r'^tinymce/',include('tinymce.urls')),
 ]

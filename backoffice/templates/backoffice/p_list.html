@@ -16,12 +16,14 @@
                             Brand :
                             <span class="badge badge-default badge-pill">{{ product.Brand }}</span>
                     </li>
+                    {% if user.is_staff or user.is_superuser %}
                     <li class="list-group-item-card justify-content-between">
                         Buying Price :
                         <div class="alignright">
                             <span class="pricetag buyprice">{{ product.BuyPrice }}</span>
                         </div>
                     </li>
+                    {% endif %}
                     <li class="list-group-item-card justify-content-between">
                         Selling Price : 
                         <div class="alignright">
@@ -43,6 +45,7 @@
     </div>
 </div>
 
+{% if products.has_previous or products.has_next %}
 <nav aria-label="...">
   <ul class="pagination justify-content-center">
     {% if products.has_previous == False %}
@@ -69,6 +72,7 @@
       <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
     {% endif %}
 </nav>
+{% endif %}
 {% endblock content %}
 
 
