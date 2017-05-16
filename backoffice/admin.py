@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ProductType,ProductSubType,Product,ProductBrand,ProductImage,ProductLink
+from .models import ProductType,ProductSubType,Product,ProductBrand,ProductImage,ProductLink,ProductReferences
 from jet.admin import CompactInline
 import copy
 
@@ -37,16 +37,22 @@ class ProductSubTypeAdmin(admin.ModelAdmin):
 
 class ProductImageInline(CompactInline):
     model=ProductImage
+    exclude = ('height','width')
 
 class ProductLinkInline(CompactInline):
     model=ProductLink
+
+class ProductReferencesInline(CompactInline):
+    model=ProductReferences
+
 
 class ProductAdmin(admin.ModelAdmin):
     actions = [duplicate_product]
     list_filter = ('Tags','ProductType','ProductSubType','Brand','BuyPrice')
     search_fields = ['ProductName',]
     list_display=("ProductName","tag_list","ProductType","ProductSubType","Brand","BuyPrice","SellPrice","Weight")
-    inlines = (ProductImageInline,ProductLinkInline,)
+    #inlines = (ProductImageInline,ProductLinkInline,)
+    inlines = (ProductImageInline,ProductLinkInline,ProductReferencesInline)
     js=['tiny_mce/tiny_mce.js',]
 
     def get_queryset(self, request):
