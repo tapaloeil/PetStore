@@ -1,3 +1,4 @@
+import uuid
 from django.db import models
 from django.utils import timezone
 from tinymce.models import HTMLField
@@ -6,8 +7,10 @@ from djmoney.models.fields import MoneyField
 from measurement.measures import Weight
 from django_measurement.models import MeasurementField
 from taggit.managers import TaggableManager
-from django.db.models.signals import post_save
+from django.db.models.signals import pre_save,post_save
 from django.db.models import Count
+from django.utils.text import slugify
+from model_utils import FieldTracker
 
 class ProductBrand(models.Model):
     Name=models.CharField(max_length=200,verbose_name='Marque', blank=True,null=True)
@@ -68,6 +71,7 @@ class ProductReferences(models.Model):
         return self.Ref
 
 class Product(models.Model):
+    slug=models.SlugField(null=True,blank=True)
     ProductName=models.CharField(
         max_length=200,
         blank=True,
@@ -120,6 +124,7 @@ class Product(models.Model):
         null=True,
         verbose_name='Prix de vente (remplacé par Référence produit, à inactiver)')
     RefCount = models.SmallIntegerField(default=0,verbose_name="Références")
+    tracker = FieldTracker()
 
     def __str__(self):
         return self.ProductName
@@ -143,7 +148,6 @@ class ProductImage(models.Model):
         verbose_name = "Images du produit"
         verbose_name_plural = "Images du produit"
 
-
 class ProductLink(models.Model):
     Description = models.CharField(max_length=200, blank=True, null=True)
     URL = models.URLField(
@@ -164,7 +168,6 @@ class ProductLink(models.Model):
     def __str__(self):
         return self.Description
 
-
 def post_save_ProductImage_receiver(sender, instance, *args, **kwargs):
     if instance.image is not None and instance.Product.MainPhoto is None:
         instance.Product.MainPhoto=instance
@@ -177,5 +180,22 @@ def post_save_ProductReferences_receiver(sender, instance, *args, **kwargs):
         instance.Product.RefCount=ProductReferences.objects.filter(Product=instance.Product).count()
         instance.Product.save()
 
+def create_slug(instance, new_slug=None):
+    slug=slugify(instance.ProductName)
+    if new_slug is not None:
+        slug=new_slug
+    qs=Product.objects.filter(slug=slug).order_by("-id")
+    exists=qs.exists()
+    if(exists):
+        new_slug="%s-%s" % (slug, str(uuid.uuid4())[:12])
+        return create_slug(instance,new_slug=new_slug)
+    return slug
+
+def pre_save_Product_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug or instance.tracker.has_changed("ProductName"):
+        instance.slug=create_slug(instance)
+
+
 post_save.connect(post_save_ProductImage_receiver, sender=ProductImage)
 post_save.connect(post_save_ProductReferences_receiver, sender=ProductReferences)
+pre_save.connect(pre_save_Product_receiver, sender=Product)

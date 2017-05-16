@@ -8,7 +8,8 @@ import copy
 def duplicate_product(modeladmin, request, queryset):
     for p in queryset:
         pcopy=copy.copy(p)
-        p.ProductName = p.ProductName + " - copie"
+        p.slug=None
+        #p.ProductName = p.ProductName + " - copie"
         p.pk=None
         p.save()
     duplicate_product.short_description ="Duplicate product"
@@ -65,17 +66,26 @@ class ProductAdmin(admin.ModelAdmin):
         return u", ".join(o.name for o in obj.Tags.all())
 
     def get_MainProductBuyPrice(self,obj):
-        return obj.MainProductReference.BuyPrice
+        if obj.MainProductReference:
+            return obj.MainProductReference.BuyPrice
+        else:
+            return "--"
     #get_MainProductBuyPrice.admin_order_field="Référence - Prix d'achat"
     get_MainProductBuyPrice.short_description="Référence - Prix d'achat"
 
     def get_MainProductSellPrice(self,obj):
-        return obj.MainProductReference.SellPrice
+        if obj.MainProductReference:
+            return obj.MainProductReference.SellPrice
+        else:
+            return "--"
     #get_MainProductSellPrice.admin_order_field="Référence - Prix de vente"
     get_MainProductSellPrice.short_description="Référence - Prix de vente"
 
     def get_MainProductWeight(self,obj):
-        return u"%s %s" % (obj.MainProductReference.Measure,obj.MainProductReference.MeasureUnit)
+        if obj.MainProductReference:        
+            return u"%s %s" % (obj.MainProductReference.Measure,obj.MainProductReference.MeasureUnit)
+        else:
+            return "--"            
         #return obj.MainProductReference.Measure
     #get_MainProductWeight.admin_order_field="Référence - Poids"
     get_MainProductWeight.short_description="Référence - Poids"
