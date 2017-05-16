@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import ProductType,ProductSubType,Product,ProductBrand,ProductImage,ProductLink,ProductReferences
 from jet.admin import CompactInline
+from django.db.models import Count
+
 import copy
 
 def duplicate_product(modeladmin, request, queryset):
@@ -50,10 +52,10 @@ class ProductAdmin(admin.ModelAdmin):
     actions = [duplicate_product]
     list_filter = ('Tags','ProductType','ProductSubType','Brand')#,'BuyPrice')
     search_fields = ['ProductName',]
-    list_display=("ProductName","tag_list","ProductType","ProductSubType","Brand","get_MainProductBuyPrice","get_MainProductSellPrice","get_MainProductWeight")#,"BuyPrice","SellPrice","Weight")
+    list_display=("ProductName","tag_list","ProductType","ProductSubType","Brand","RefCount","get_MainProductBuyPrice","get_MainProductSellPrice","get_MainProductWeight")#,"BuyPrice","SellPrice","Weight")
     #inlines = (ProductImageInline,ProductLinkInline,)
     inlines = (ProductReferencesInline,ProductImageInline,ProductLinkInline)
-    exclude=("Weight","BuyPrice","SellPrice")
+    exclude=("Weight","BuyPrice","SellPrice","RefCount")
     js=['tiny_mce/tiny_mce.js',]
 
     def get_queryset(self, request):
@@ -77,6 +79,7 @@ class ProductAdmin(admin.ModelAdmin):
         #return obj.MainProductReference.Measure
     #get_MainProductWeight.admin_order_field="Référence - Poids"
     get_MainProductWeight.short_description="Référence - Poids"
+
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductBrand,ProductBrandAdmin)

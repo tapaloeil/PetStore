@@ -7,6 +7,7 @@ from measurement.measures import Weight
 from django_measurement.models import MeasurementField
 from taggit.managers import TaggableManager
 from django.db.models.signals import post_save
+from django.db.models import Count
 
 class ProductBrand(models.Model):
     Name=models.CharField(max_length=200,verbose_name='Marque', blank=True,null=True)
@@ -46,11 +47,6 @@ class ProductReferences(models.Model):
         blank=True,
         null=True,
         verbose_name='Prix de vente (€)')
-#    Weight = MeasurementField(
-#        measurement=Weight,
-#        unit_choices=(('g','g'),('kg','kg')),
-#        blank=True,
-#        null=True)
     MeasureUnitChoice =(
             ('g','g'),
             ('kg','kg'),
@@ -123,6 +119,7 @@ class Product(models.Model):
         blank=True,
         null=True,
         verbose_name='Prix de vente (remplacé par Référence produit, à inactiver)')
+    RefCount = models.SmallIntegerField(default=0,verbose_name="Références")
 
     def __str__(self):
         return self.ProductName
@@ -159,17 +156,10 @@ class ProductLink(models.Model):
         blank=True,
         null=True
         )
-#    LinkBuyPrice= MoneyField(
-#        max_digits=10,
-#        decimal_places=2, 
-#        default_currency='EUR',
-#        default=0,
-#        verbose_name="Prix d'achat")
 
     class Meta:
         verbose_name = "Liens vers les sites de vente"
         verbose_name_plural = "Liens vers les sites de vente"
-
 
     def __str__(self):
         return self.Description
@@ -183,6 +173,8 @@ def post_save_ProductImage_receiver(sender, instance, *args, **kwargs):
 def post_save_ProductReferences_receiver(sender, instance, *args, **kwargs):
     if instance.Product is not None and instance.Product.MainProductReference is None:
         instance.Product.MainProductReference=instance
+    if instance.Product is not None:
+        instance.Product.RefCount=ProductReferences.objects.filter(Product=instance.Product).count()
         instance.Product.save()
 
 post_save.connect(post_save_ProductImage_receiver, sender=ProductImage)
