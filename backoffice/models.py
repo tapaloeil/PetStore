@@ -71,7 +71,7 @@ class ProductReferences(models.Model):
         return self.Ref
 
 class Product(models.Model):
-    slug=models.SlugField(null=True,blank=True)
+    slug=models.SlugField(unique=True)
     ProductName=models.CharField(
         max_length=200,
         blank=True,
