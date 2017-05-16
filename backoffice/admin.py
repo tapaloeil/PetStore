@@ -48,11 +48,12 @@ class ProductReferencesInline(CompactInline):
 
 class ProductAdmin(admin.ModelAdmin):
     actions = [duplicate_product]
-    list_filter = ('Tags','ProductType','ProductSubType','Brand','BuyPrice')
+    list_filter = ('Tags','ProductType','ProductSubType','Brand')#,'BuyPrice')
     search_fields = ['ProductName',]
-    list_display=("ProductName","tag_list","ProductType","ProductSubType","Brand","BuyPrice","SellPrice","Weight")
+    list_display=("ProductName","tag_list","ProductType","ProductSubType","Brand","get_MainProductBuyPrice","get_MainProductSellPrice","get_MainProductWeight")#,"BuyPrice","SellPrice","Weight")
     #inlines = (ProductImageInline,ProductLinkInline,)
-    inlines = (ProductImageInline,ProductLinkInline,ProductReferencesInline)
+    inlines = (ProductReferencesInline,ProductImageInline,ProductLinkInline)
+    exclude=("Weight","BuyPrice","SellPrice")
     js=['tiny_mce/tiny_mce.js',]
 
     def get_queryset(self, request):
@@ -61,6 +62,21 @@ class ProductAdmin(admin.ModelAdmin):
     def tag_list(self, obj):
         return u", ".join(o.name for o in obj.Tags.all())
 
+    def get_MainProductBuyPrice(self,obj):
+        return obj.MainProductReference.BuyPrice
+    #get_MainProductBuyPrice.admin_order_field="Référence - Prix d'achat"
+    get_MainProductBuyPrice.short_description="Référence - Prix d'achat"
+
+    def get_MainProductSellPrice(self,obj):
+        return obj.MainProductReference.SellPrice
+    #get_MainProductSellPrice.admin_order_field="Référence - Prix de vente"
+    get_MainProductSellPrice.short_description="Référence - Prix de vente"
+
+    def get_MainProductWeight(self,obj):
+        return u"%s %s" % (obj.MainProductReference.Measure,obj.MainProductReference.MeasureUnit)
+        #return obj.MainProductReference.Measure
+    #get_MainProductWeight.admin_order_field="Référence - Poids"
+    get_MainProductWeight.short_description="Référence - Poids"
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductBrand,ProductBrandAdmin)
