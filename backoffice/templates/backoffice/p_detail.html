@@ -1,0 +1,114 @@
+{% extends 'backoffice/base.html' %}
+{% load static %}
+{% block content %}
+<script type="text/javascript" src="{% static 'js/jquery-1.7.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.ui.core.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.ui.widget.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.ui.rcarousel.min.js' %}"></script>
+    <div class="product-view">
+    	<div class="product-essential">
+    		<form action="#" method="POST">
+    			<div class="gallery">
+    				<!--<ul id="carousel" class="elastislide-list">
+						{% for photo in photos %}
+							<li data-preview='{{ photo.image.url }}'>
+								<a href="#">
+									<img src="{{ photo.image.url }}" />
+								</a>
+							</li>
+						{% endfor %}
+    				</ul>
+    				<div class="image_preview">
+						<img id="preview" src="{% if product.MainPhoto and product.MainPhoto.image.url is not None %}{{ product.MainPhoto.image.url }}{% endif %}" />
+    				</div>-->
+    				<div class="image-preview">
+						<img id='image-preview' src="#" />
+    				</div>    				
+    				<div id='carousel' />
+						{% for photo in photos %}
+							<img id="img-{{ photo.id }}" src="{{ photo.image.url }}" />
+						{% endfor %}
+    				</div>
+    			</div>
+    			<div class="product-shop">
+    				<div class="product-name">
+						<h1>{{ product.ProductName }}</h1>
+    				</div>
+    				<div class="product-info">
+						<div class="short-description">
+							{{ product.Description|safe|truncatewords:100 }}
+						</div>
+    				</div>
+    			</div>
+    			<div class="clearfix"></div>
+			    <div class="product-type-data">
+					<div class="grouped-items-table-wrapper">
+						<table class="data-table grouped-items-table">
+							<thread>
+								<tr class="first last">
+									<th class="name">Nom du produit</th>
+									<th class="price">Prix</th>
+									<th class="qty">Quantité</th>
+								</tr>
+								<tbody>
+									{% for ref in references %}
+										<tr>
+											<td class="name">
+												<p class="name-wrapper">
+													{{ ref.Ref }}
+												</p>
+											</td>
+											<td class="price">
+												<span class="price">
+													{{ ref.SellPrice }}
+												</span>
+											</td>
+											<td class="qty"></td>
+										</tr>
+									{% endfor %}
+								</tbody>
+								<tfoot>
+									<tr class="first last">
+										<td colspan="3" class="last">
+											<div class="add-to-cart-buttons">
+												<button type="button" title="Ajouter au panier" class="button btn-cart"><span>Ajouter au panier</span></button>
+											</div>
+										</td>
+									</tr>
+								</tfoot>
+							</thread>
+						</table>
+					</div>
+			    </div>
+	       	</form>
+	    </div>
+	    <div class="product-collateral">
+	    	<div class="product-description">
+				{{ product.Description|safe }}
+	    	</div>
+	    </div>
+    </div>
+		<script type="text/javascript">
+			jQuery(function($) {
+				function selectCarouselImage(iid){
+					$("#image-preview").attr("src",$("#"+iid).attr("src"));
+					$(".wrapper>img").css("border","0");
+					$("#"+iid).css("border","2px solid #00BCD4");
+				}
+				function startCarousel(){
+					$(".wrapper>img").click(function(event) {
+						selectCarouselImage(this.id);
+					});
+					selectCarouselImage($("#carousel .wrapper img")[0].id);
+				}
+
+				$( "#carousel" ).rcarousel( {
+					width: 100, 
+					height: 100,
+					visible:3,
+					orientation:"horizontal",
+					start: startCarousel
+				});
+			});
+		</script>
+{% endblock %}

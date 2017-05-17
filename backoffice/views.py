@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Product
+from .models import Product,ProductReferences,ProductImage
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -22,3 +22,9 @@ def p_list(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         products = paginator.page(paginator.num_pages)
     return render(request, 'backoffice/p_list.html',{'products':products})
+
+def p_detail(request,pk):
+    p=get_object_or_404(Product,pk=pk)
+    p_photos=ProductImage.objects.filter(Product=p)
+    p_refs=ProductReferences.objects.filter(Product=p)
+    return render(request,'backoffice/p_detail.html',{'product':p, 'photos':p_photos, 'references':p_refs})

@@ -6,36 +6,41 @@
     {% for product in products %}
         <div class="col-lg-3 col-md-4 col-xs-6 thumb">
             <div class="card" >
-            {% if product.MainPhoto %}
+            {% if product.MainPhoto and product.MainPhoto.image.url is not None %}
               <img class="card-img-top img-responsive shake" src='{{ product.MainPhoto.image.url }}' alt="Card image cap">
             {% endif %}
               <div class="card-block">
-                <h4 class="card-title">{{ product.ProductName }}</h4>
+                <h4 class="card-title"><a href="{% url 'p_detail' pk=product.pk %}">{{ product.ProductName }}</a></h4>
                 <ul class="list-group-card">
-                    <li class="list-group-item-card justify-content-between">
-                            Brand :
-                            <span class="badge badge-default badge-pill">{{ product.Brand }}</span>
-                    </li>
-                    {% if user.is_staff or user.is_superuser %}
-                    <li class="list-group-item-card justify-content-between">
-                        Buying Price :
-                        <div class="alignright">
-                            <span class="pricetag buyprice">{{ product.MainProductReference.BuyPrice }}</span>
-                        </div>
-                    </li>
-                    {% endif %}
-                    <li class="list-group-item-card justify-content-between">
-                        Selling Price : 
-                        <div class="alignright">
-                            <span class="pricetag sellprice">{{ product.MainProductReference.SellPrice }}</span>
-                        </div>
-                    </li>
-                    <li class="list-group-item-card justify-content-between">
-                        {% for Tag in product.Tags.all %}
-                            <span class="badge badge-pill badge-info badge-tag">{{ Tag }}</span>
-                        {% endfor %}
-                        
-                    </li>
+                    {% if user.is_staff or user.is_superuser %}  
+                        <li class="list-group-item-card justify-content-between">
+                                Brand :
+                                <span class="badge badge-default badge-pill">{{ product.Brand }}</span>
+                        </li>
+
+                        <li class="list-group-item-card justify-content-between">
+                            Buying Price :
+                            <div class="alignright">
+                                <span class="pricetag buyprice">{{ product.MainProductReference.BuyPrice }}</span>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item-card justify-content-between">
+                            Selling Price : 
+                            <div class="alignright">
+                                <span class="pricetag sellprice">{{ product.MainProductReference.SellPrice }}</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item-card justify-content-between">
+                            {% for Tag in product.Tags.all %}
+                                <span class="badge badge-pill badge-info badge-tag">{{ Tag }}</span>
+                            {% endfor %}
+                        </li>
+                    {% else %}
+                        <li class="list-group-item-card justify-content-between">
+                            {% if product.RefCount > 1 %}à partir de {% endif %}{{ product.MainProductReference.SellPrice }}
+                        </li>
+                    {% endif %}                    
                 </ul>
               </div>
             </div>

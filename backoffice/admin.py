@@ -56,7 +56,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display=("ProductName","tag_list","ProductType","ProductSubType","Brand","RefCount","get_MainProductBuyPrice","get_MainProductSellPrice","get_MainProductWeight")#,"BuyPrice","SellPrice","Weight")
     #inlines = (ProductImageInline,ProductLinkInline,)
     inlines = (ProductReferencesInline,ProductImageInline,ProductLinkInline)
-    exclude=("Weight","BuyPrice","SellPrice","RefCount","slug")
+    exclude=("Weight","BuyPrice","SellPrice","RefCount","slug", "MainPhoto", "MainProductReference")
     js=['tiny_mce/tiny_mce.js',]
 
     def get_queryset(self, request):
