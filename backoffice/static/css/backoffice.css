@@ -277,6 +277,7 @@ h1, h2, h3, h4 {
 
 .block, .col-left-first {
     margin-bottom: 20px;
+    z-index: 9999;
 }
 
 .col-left-first .block:last-of-type {

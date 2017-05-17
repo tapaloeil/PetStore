@@ -41,7 +41,7 @@
 <div class="col-sm-12">
     <div class='row'>
     {% for product in products %}
-        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+        <div class="col-lg-4 col-md-4 col-xs-6 thumb">
             <div class="card" >
             {% if product.MainPhoto and product.MainPhoto.image.url is not None %}
               <img class="card-img-top img-responsive shake" src='{{ product.MainPhoto.image.url }}' alt="Card image cap">
@@ -82,7 +82,7 @@
               </div>
             </div>
         </div>
-    {% cycle "" "" "" "</div><div class='row'>" %}
+    {% cycle "" "" "</div><div class='row'>" %}
     {% endfor %}
     </div>
 </div>
