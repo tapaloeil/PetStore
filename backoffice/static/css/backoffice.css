@@ -6,17 +6,23 @@
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
     color: #ffffff;
-    font-size: 36pt;
+    font-size: 65px;
     text-decoration: none;
+    line-height: 56px;
+    padding-top: 10px;
 }
 
 
 h1 {
-    font-family: 'Lobster', cursive;
+    font-family: 'Great Vibes', cursive;
 }
 
 h2,h3,h4{
   font-family: 'Oswald', sans-serif; 
+}
+
+.container {
+  margin-top: 15px;
 }
 
 .date {
@@ -49,6 +55,8 @@ h2,h3,h4{
     background-color: #fff;
     border: 0;
     border-radius: .25rem;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
 }
 
 .card-img-top {
@@ -59,8 +67,8 @@ h2,h3,h4{
 
 .thumb{
     padding-bottom: 10px;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+    /*border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;*/
 }
 
 .list-group-item-card{

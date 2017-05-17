@@ -8,9 +8,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 def p_list(request):
     p_list = Product.objects.all().order_by("ProductName")
-    pt_list = ProductType.objects.all()
-    pst_list=ProductSubType.objects.all()
-    pb_list=ProductBrand.objects.all()
+    pt_list = ProductType.objects.all().order_by("Type")
+    pst_list=ProductSubType.objects.all().order_by("SubType")
+    pb_list=ProductBrand.objects.all().order_by("Name")
     paginator = Paginator(p_list, 12)
 
     page = request.GET.get('page')
