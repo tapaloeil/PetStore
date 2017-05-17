@@ -17,6 +17,10 @@
 	margin-left: 0px;
 }
 
+.wrapper > img{
+	cursor: pointer;
+}
+
 .product-view .product-shop .product-name .h1, .product-view .product-shop .product-name h1, .product-view .gallery .product-name h1 {
     margin-bottom: 10px;
     border: 0;
