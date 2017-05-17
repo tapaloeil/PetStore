@@ -434,6 +434,12 @@ div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-at
   }
 }
 
+@media only screen and (min-width: 1200px){
+  .card-image{
+    min-height: 240px;
+  }
+}
+
 @media only screen and (max-width:1200px){
   .img-responsive{
     max-width: 200px;
