@@ -42,6 +42,7 @@ h2,h3,h4{
     padding:0;
 }
 
+
 .card {
     position: relative;
     display: block;
@@ -417,11 +418,19 @@ div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-at
   .block-layered-nav .block-content > dl > dt {
       padding-left: 10px;
   }
+
 }
 
-@media (max-width: 765px){
+@media (max-width: 767px){
   .sidebar{
     display:none;
+  }
+      .card-title{
+    height: 40px!important;
+    font-size: 22px!important;
+  }
+    .card-image{
+    min-height:  240px;
   }
 }
 
@@ -429,11 +438,26 @@ div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-at
   .img-responsive{
     max-width: 200px;
   }
+  .card-title{
+    height: 70px;
+    font-size: 22px;
+  }
+  .card-image{
+    min-height:  240px;
+  }
+
 }
 
-@media only screen and (min-width: 771px) and (max-width:992px){
+@media only screen and (min-width: 768px) and (max-width:992px){
   .img-responsive{
     max-width: 120px;
+  }
+    .card-title{
+    height: 60px;
+    font-size: medium;
+  }
+  .card-image{
+    min-height:  185px;
   }
 }
 
