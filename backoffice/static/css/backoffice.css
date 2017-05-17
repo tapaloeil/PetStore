@@ -87,6 +87,11 @@ h1, h2, h3, h4 {
     padding-right: 10px
 }
 
+.img-responsive{
+  max-width: 240px;
+  max-height: 240px;
+}
+
 .pricetag{
     white-space: nowrap;
     position: relative;
