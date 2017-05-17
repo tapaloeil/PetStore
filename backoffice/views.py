@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Product,ProductReferences,ProductImage,ProductType,ProductSubType
+from .models import Product,ProductReferences,ProductImage,ProductType,ProductSubType,ProductBrand
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -10,6 +10,7 @@ def p_list(request):
     p_list = Product.objects.all().order_by("ProductName")
     pt_list = ProductType.objects.all()
     pst_list=ProductSubType.objects.all()
+    pb_list=ProductBrand.objects.all()
     paginator = Paginator(p_list, 12)
 
     page = request.GET.get('page')
@@ -21,7 +22,7 @@ def p_list(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         products = paginator.page(paginator.num_pages)
-    return render(request, 'backoffice/p_list.html',{'products':products, 'ptypes':pt_list, 'psubtypes':pst_list})
+    return render(request, 'backoffice/p_list.html',{'products':products, 'ptypes':pt_list, 'psubtypes':pst_list, 'pbrands':pb_list})
 
 def p_detail(request,pk):
     p=get_object_or_404(Product,pk=pk)

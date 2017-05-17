@@ -28,12 +28,25 @@
                     <ol class="amsopby-flag-clickfirst">
 
                         {% for pt in psubtypes %}
-                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pt.Type }}">
+                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pt.SubType }}">
                                 <a class="amshopby-attr" rel="nofollow" href="#">{{ pt.SubType }}</a>
                             </li>
                         {% endfor %}
                     </ol>
                 </dd>
+                <dt>
+                    Marque
+                </dt>
+                <dd>
+                    <ol class="amsopby-flag-clickfirst">
+
+                        {% for pb in pbrands %}
+                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pb.Name }}">
+                                <a class="amshopby-attr" rel="nofollow" href="#">{{ pb.Name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </dd>                
             </dl>
         </div>
     </div>    
@@ -51,35 +64,9 @@
               <div class="card-block">
                 <h4 class="card-title"><a href="{% url 'p_detail' pk=product.pk %}">{{ product.ProductName|truncatechars:60 }}</a></h4>
                 <ul class="list-group-card">
-                    {% if user.is_staff or user.is_superuser %}  
-                        <li class="list-group-item-card justify-content-between">
-                                Brand :
-                                <span class="badge badge-default badge-pill">{{ product.Brand }}</span>
-                        </li>
-
-                        <li class="list-group-item-card justify-content-between">
-                            Buying Price :
-                            <div class="alignright">
-                                <span class="pricetag buyprice">{{ product.MainProductReference.BuyPrice }}</span>
-                            </div>
-                        </li>
-
-                        <li class="list-group-item-card justify-content-between">
-                            Selling Price : 
-                            <div class="alignright">
-                                <span class="pricetag sellprice">{{ product.MainProductReference.SellPrice }}</span>
-                            </div>
-                        </li>
-                        <li class="list-group-item-card justify-content-between">
-                            {% for Tag in product.Tags.all %}
-                                <span class="badge badge-pill badge-info badge-tag">{{ Tag }}</span>
-                            {% endfor %}
-                        </li>
-                    {% else %}
                         <li class="list-group-item-card justify-content-between">
                             {% if product.RefCount > 1 %}à partir de {% endif %}{{ product.MainProductReference.SellPrice }}
                         </li>
-                    {% endif %}                    
                 </ul>
               </div>
             </div>
@@ -120,4 +107,29 @@
 {% endif %}
 {% endblock content %}
 
+                    <!--{% if user.is_staff or user.is_superuser %}  
+                        <li class="list-group-item-card justify-content-between">
+                                Brand :
+                                <span class="badge badge-default badge-pill">{{ product.Brand }}</span>
+                        </li>
 
+                        <li class="list-group-item-card justify-content-between">
+                            Buying Price :
+                            <div class="alignright">
+                                <span class="pricetag buyprice">{{ product.MainProductReference.BuyPrice }}</span>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item-card justify-content-between">
+                            Selling Price : 
+                            <div class="alignright">
+                                <span class="pricetag sellprice">{{ product.MainProductReference.SellPrice }}</span>
+                            </div>
+                        </li>
+                        <li class="list-group-item-card justify-content-between">
+                            {% for Tag in product.Tags.all %}
+                                <span class="badge badge-pill badge-info badge-tag">{{ Tag }}</span>
+                            {% endfor %}
+                        </li>
+                    {% else %}-->
+                                        <!--{% endif %} --> 
