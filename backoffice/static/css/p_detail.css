@@ -17,6 +17,11 @@
 	margin-left: 0px;
 }
 
+.image-preview{
+	max-height: 400px;
+	max-width: 400px;
+}
+
 .wrapper > img{
 	cursor: pointer;
 }
