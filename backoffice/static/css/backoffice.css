@@ -262,3 +262,150 @@ h1, h2, h3, h4 {
   0%, 100% {
     transform: translate(0, 0) rotate(0); } 
 }
+
+
+.col-left {
+    float: left;
+    width: 25%;
+    padding-left: 0;
+    clear: left;
+}
+
+.col-bottom, .col-left, .col-right, .col-main {
+    padding: 0 10px;
+}
+
+.block, .col-left-first {
+    margin-bottom: 20px;
+}
+
+.col-left-first .block:last-of-type {
+    margin-bottom: 0;
+}
+
+div.block-layered-nav, div.amshopby-page-container, div.amshopby-filters-top {
+    position: relative;
+}
+
+body:not(.customer-account) .block:first-child .block-title {
+}
+
+div.block-layered-nav .block-title {
+    text-align: left;
+    border-top: 0;
+}
+
+.block-title {
+    position: relative;
+}
+
+div.block-layered-nav .block-title strong {
+    color: #676767;
+    font-size: 18px;
+}
+
+.block-title h2, .block-title h3, .block-title strong {
+    margin: 0;
+    color: #000000;
+    font-family: 'Lato-Regular', Verdana, Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1.4;
+    text-rendering: optimizeSpeed;
+    text-transform: uppercase;
+}
+
+div.block-layered-nav p.block-subtitle {
+    display: none!important;
+}
+
+.block-layered-nav .block-subtitle--filter {
+    display: none;
+    margin: 0;
+    margin-bottom: 10px;
+    color: #000000;
+    font-family: 'Lato-Regular', Verdana, Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 1.4;
+    text-rendering: optimizeSpeed;
+    text-transform: uppercase;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    margin-bottom: 0px;
+    padding: 7px 10px 7px 24px;
+    border-top: 1px solid #b7b7b7;
+    position: relative;
+    cursor: pointer;
+}
+
+.main .col-left div.block-layered-nav.amshopby-collapse-enabled dl dd+dt {
+}
+
+div.block-layered-nav.amshopby-collapse-enabled dl dt {
+    cursor: pointer;
+    padding-left: 30px;
+}
+
+.block-layered-nav .block-content > dl > dt {
+    margin: 0;
+    margin-bottom: 10px;
+    color: #000000;
+    font-family: 'Lato-Regular', Verdana, Arial, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 1.4;
+    text-rendering: optimizeSpeed;
+    text-transform: uppercase;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    margin-bottom: 0px;
+    padding: 7px 10px 7px 24px;
+    border-top: 1px solid #b7b7b7;
+    position: relative;
+    display: block;
+}
+
+
+
+.block-layered-nav .block-content > dl > dd {
+    padding: 10px;
+    margin: 0;
+}
+
+.block-layered-nav dl dd {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-attr:hover, div.block-layered-nav dd a.amshopby-attr-selected, div.block-layered-nav li.amshopby-cat-multi a, div.block-layered-nav li.amshopby-cat-multiselected a {
+    padding-left: 20px;
+    position: relative;
+    text-decoration: none;
+}
+
+.block-layered-nav dl dd ol > li > span, .block-layered-nav dl dd ol > li > a {
+    padding: 5px 15px;
+    display: block;
+}
+
+
+@media only screen and (min-width: 771px){
+  .block-layered-nav .block-content > dl > dt {
+      padding-left: 10px;
+  }
+}
+

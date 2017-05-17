@@ -1,6 +1,43 @@
 {% extends 'backoffice/base.html' %}
 
 {% block content %}
+<div class="col-left sidebar col-left-first">
+    <div class="block block-layered-nav amshopby-overflow-scroll-enabled amshopby-collapse-enabled amshopby-filters-left block-layered-nav amshopby-overflow-scroll-enabled amshopby-collapse-enabled amshopby-filters-left--no-filters">
+        <div class="block-title">
+            <strong><span>Filtres de recherche</span></strong>
+        </div>
+        <div class="block-content toggle-content">
+            <p class="block-subtitle block-subtitle--filter">Filtre</p>
+            <dl id="narrow-by-list">
+                <dt>
+                    Catégorie
+                </dt>
+                <dd>
+                    <ol class="amsopby-flag-clickfirst">
+                        {% for pt in ptypes %}
+                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pt.Type }}">
+                                <a class="amshopby-attr" rel="nofollow" href="#">{{ pt.Type }}</a>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </dd>
+                <dt>
+                    Type de produit
+                </dt>
+                <dd>
+                    <ol class="amsopby-flag-clickfirst">
+
+                        {% for pt in psubtypes %}
+                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pt.Type }}">
+                                <a class="amshopby-attr" rel="nofollow" href="#">{{ pt.SubType }}</a>
+                            </li>
+                        {% endfor %}
+                    </ol>
+                </dd>
+            </dl>
+        </div>
+    </div>    
+</div>
 <div class="col-sm-12">
     <div class='row'>
     {% for product in products %}

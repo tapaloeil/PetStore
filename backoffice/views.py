@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Product,ProductReferences,ProductImage
+from .models import Product,ProductReferences,ProductImage,ProductType,ProductSubType
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -8,8 +8,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 def p_list(request):
     p_list = Product.objects.all()
-
-    p_list = Product.objects.all()
+    pt_list = ProductType.objects.all()
+    pst_list=ProductSubType.objects.all()
     paginator = Paginator(p_list, 12)
 
     page = request.GET.get('page')
@@ -21,7 +21,7 @@ def p_list(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         products = paginator.page(paginator.num_pages)
-    return render(request, 'backoffice/p_list.html',{'products':products})
+    return render(request, 'backoffice/p_list.html',{'products':products, 'ptypes':pt_list, 'psubtypes':pst_list})
 
 def p_detail(request,pk):
     p=get_object_or_404(Product,pk=pk)
