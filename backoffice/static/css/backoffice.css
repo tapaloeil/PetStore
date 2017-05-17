@@ -11,8 +11,12 @@
 }
 
 
-h1, h2, h3, h4 {
+h1 {
     font-family: 'Lobster', cursive;
+}
+
+h2,h3,h4{
+  font-family: 'Oswald', sans-serif; 
 }
 
 .date {
@@ -40,15 +44,7 @@ h1, h2, h3, h4 {
 
 .card {
     position: relative;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    display: block;
     background-color: #fff;
     border: 1px solid rgba(0,0,0,.125);
     border-radius: .25rem;
@@ -57,7 +53,7 @@ h1, h2, h3, h4 {
 .card-img-top {
     border-top-right-radius: calc(.25rem - 1px);
     border-top-left-radius: calc(.25rem - 1px);
-    max-width: 240px;
+    /*max-width: 240px;*/
 }
 
 .thumb{
@@ -71,6 +67,7 @@ h1, h2, h3, h4 {
     margin-bottom: -1px;
     /* background-color: #fff; */
     border: 0px solid #ddd;
+    text-align: center;
 }
 
 .list-group-item-card>.badge {
@@ -84,12 +81,16 @@ h1, h2, h3, h4 {
 
 .card-title{
     padding-left: 10px;
-    padding-right: 10px
+    padding-right: 10px;
+    text-align: center;
 }
 
 .img-responsive{
-  max-width: auto;
   max-height: 240px;
+  width: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pricetag{
