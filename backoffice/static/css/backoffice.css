@@ -422,7 +422,7 @@ div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-at
 }
 
 
-@media only screen and (min-width: 771px){
+@media (min-width: 771px){
   .block-layered-nav .block-content > dl > dt {
       padding-left: 10px;
   }
@@ -442,13 +442,13 @@ div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-at
   }
 }
 
-@media only screen and (min-width: 1200px){
+@media (min-width: 1200px){
   .card-image{
     min-height: 240px;
   }
 }
 
-@media only screen and (max-width:1200px){
+@media (max-width:1200px){
   .img-responsive{
     max-width: 200px;
   }
@@ -462,7 +462,7 @@ div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-at
 
 }
 
-@media only screen and (min-width: 768px) and (max-width:992px){
+@media  (min-width: 768px) and (max-width:992px){
   .img-responsive{
     max-width: 120px;
   }
