@@ -4,22 +4,12 @@
 
 <div class="col-left sidebar col-left-first">
     <div class="block block-layered-nav amshopby-overflow-scroll-enabled amshopby-collapse-enabled amshopby-filters-left block-layered-nav amshopby-overflow-scroll-enabled amshopby-collapse-enabled amshopby-filters-left--no-filters">
-        <div id="filter-content">
-            <div class="block-title" style="border-bottom: 1px solid #b7b7b7;">
-                <strong><span>Filtres appliqués</span></strong>
-            </div>
-                <dl id="narrow-by-list">
-                    <dd>
-                        <ol id="filter-list" class="amsopby-flag-clickfirst filter-remove">
-                        </ol>
-                    </dd>
-            </div>
         <div class="block-title">
             <strong><span>Filtres disponibles</span></strong>
         </div>
         <div class="block-content toggle-content">
             <p class="block-subtitle block-subtitle--filter">Filtre</p>
-            <form id='SearchForm' method='GET' action=''>
+            <form id='SearchForm' method='GET' action='' style="display:none;">
                 <input type='text' id='q' name='q' placeholder="q" value='{{ request.GET.q }}' />
                 <input type='submit' value='Search' />
             </form>

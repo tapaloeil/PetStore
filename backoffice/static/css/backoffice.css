@@ -1,15 +1,17 @@
 .page-header {
-    background-color: #354052;
     margin-top: 0;
     padding: 20px 20px 20px 40px;
+    margin-left: 10px;
+    margin-right: 15px;   
+    margin-bottom: 15px; 
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
-    color: #ffffff;
     font-size: 65px;
     text-decoration: none;
     line-height: 56px;
     padding-top: 10px;
+
 }
 
 
@@ -42,7 +44,7 @@ h2,h3,h4{
 }
 
 .top-menu, .top-menu:hover, .top-menu:visited {
-    color: #ffffff;
+
     float: right;
     font-size: 26pt;
     margin-right: 20px;
@@ -403,8 +405,9 @@ div.block-layered-nav.amshopby-collapse-enabled dl dt {
 
 
 .block-layered-nav .block-content > dl > dd {
-    padding: 10px;
     margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;    
 }
 
 .block-layered-nav dl dd {
