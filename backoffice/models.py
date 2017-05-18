@@ -13,7 +13,7 @@ from django.utils.text import slugify
 from model_utils import FieldTracker
 
 class ProductBrand(models.Model):
-    Name=models.CharField(max_length=200,verbose_name='Marque', blank=True,null=True)
+    Name=models.CharField(max_length=200,verbose_name='Marque')
     OriginCountry = CountryField(verbose_name="Pays d'origine")
     URL = models.URLField(max_length=1000,blank=True,null=True,verbose_name='Liens vers le site')
 
@@ -21,13 +21,13 @@ class ProductBrand(models.Model):
         return (self.Name)
 
 class ProductType(models.Model):
-    Type=models.CharField(max_length=200,verbose_name='Catégorie de produits',blank=True,null=True)
+    Type=models.CharField(max_length=200,verbose_name='Catégorie de produits')
 
     def __str__(self):
         return self.Type
 
 class ProductSubType(models.Model):
-    SubType=models.CharField(max_length=200,verbose_name='Sous-atégorie de produits',blank=True,null=True)
+    SubType=models.CharField(max_length=200,verbose_name='Sous-atégorie de produits')
 
     def __str__(self):
         return self.SubType
@@ -60,9 +60,7 @@ class ProductReferences(models.Model):
     MeasureUnit = models.CharField(max_length=3, choices=MeasureUnitChoice, default='g')
     Measure = models.DecimalField(max_digits=10,decimal_places=2,default=0)
     Product=models.ForeignKey(
-        'Product',
-        blank=True,
-        null=True)
+        'Product')
     class Meta:
         verbose_name="Reference"
         verbose_name_plural='References'
@@ -74,28 +72,20 @@ class Product(models.Model):
     slug=models.SlugField(unique=True)
     ProductName=models.CharField(
         max_length=200,
-        blank=True,
-        null=True,
         verbose_name='Nom du produit')
     ProductType=models.ForeignKey(
         'ProductType',
         on_delete=models.CASCADE,
-        blank=True,
-        null=True,
         verbose_name='Catégorie de produit'
         )
     ProductSubType=models.ForeignKey(
         'ProductSubType',
         on_delete=models.CASCADE,
-        blank=True,
-        null=True,
         verbose_name='Type de produit'
         )
     Brand=models.ForeignKey(
             'ProductBrand',
             on_delete=models.CASCADE,
-            blank=True,
-            null=True,
             verbose_name='Marque'
         )
     Description = HTMLField(
@@ -134,31 +124,27 @@ def upload_location(instance, filename):
 
 class ProductImage(models.Model):
     image=models.ImageField(
-        null=True,
-        blank=True,
         width_field="width",
         height_field="height",
         upload_to=upload_location
         )
     height=models.IntegerField(default=0)
     width=models.IntegerField(default=0)
-    Product=models.ForeignKey('Product',blank=True,null=True)
+    Product=models.ForeignKey('Product')
 
     class Meta:
         verbose_name = "Images du produit"
         verbose_name_plural = "Images du produit"
 
 class ProductLink(models.Model):
-    Description = models.CharField(max_length=200, blank=True, null=True)
+    Description = models.CharField(max_length=200)
     URL = models.URLField(
         max_length=3000,
         blank=True,
         null=True,
         verbose_name='Lien vers la fiche produit')
     Product=models.ForeignKey(
-        'Product',
-        blank=True,
-        null=True
+        'Product'
         )
 
     class Meta:
