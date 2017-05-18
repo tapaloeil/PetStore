@@ -1,21 +1,36 @@
 {% extends 'backoffice/base.html' %}
-
+{% load static %}
 {% block content %}
+
 <div class="col-left sidebar col-left-first">
     <div class="block block-layered-nav amshopby-overflow-scroll-enabled amshopby-collapse-enabled amshopby-filters-left block-layered-nav amshopby-overflow-scroll-enabled amshopby-collapse-enabled amshopby-filters-left--no-filters">
+        <div id="filter-content">
+            <div class="block-title" style="border-bottom: 1px solid #b7b7b7;">
+                <strong><span>Filtres appliqués</span></strong>
+            </div>
+                <dl id="narrow-by-list">
+                    <dd>
+                        <ol id="filter-list" class="amsopby-flag-clickfirst filter-remove">
+                        </ol>
+                    </dd>
+            </div>
         <div class="block-title">
-            <strong><span>Filtres de recherche</span></strong>
+            <strong><span>Filtres disponibles</span></strong>
         </div>
         <div class="block-content toggle-content">
             <p class="block-subtitle block-subtitle--filter">Filtre</p>
+            <form id='SearchForm' method='GET' action=''>
+                <input type='text' id='q' name='q' placeholder="q" value='{{ request.GET.q }}' />
+                <input type='submit' value='Search' />
+            </form>
             <dl id="narrow-by-list">
                 <dt>
                     Catégorie
                 </dt>
                 <dd>
-                    <ol class="amsopby-flag-clickfirst">
+                    <ol class="amsopby-flag-clickfirst filter-add">
                         {% for pt in ptypes %}
-                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pt.Type }}">
+                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pt.Type }}" data-filter-dest="q_categorie">
                                 <a class="amshopby-attr" rel="nofollow" href="#">{{ pt.Type }}</a>
                             </li>
                         {% endfor %}
@@ -25,10 +40,10 @@
                     Type de produit
                 </dt>
                 <dd>
-                    <ol class="amsopby-flag-clickfirst">
+                    <ol class="amsopby-flag-clickfirst filter-add">
 
                         {% for pt in psubtypes %}
-                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pt.SubType }}">
+                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pt.SubType }}" data-filter-dest="q_subtypeproduct">
                                 <a class="amshopby-attr" rel="nofollow" href="#">{{ pt.SubType }}</a>
                             </li>
                         {% endfor %}
@@ -38,10 +53,10 @@
                     Marque
                 </dt>
                 <dd>
-                    <ol class="amsopby-flag-clickfirst">
+                    <ol class="amsopby-flag-clickfirst filter-add">
 
                         {% for pb in pbrands %}
-                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pb.Name }}">
+                            <li data-default-sort="0" data-featured-sort="0" data-text="{{ pb.Name }}" data-filter-dest="q_brand">
                                 <a class="amshopby-attr" rel="nofollow" href="#">{{ pb.Name }}</a>
                             </li>
                         {% endfor %}
@@ -105,6 +120,7 @@
     {% endif %}
 </nav>
 {% endif %}
+<script src="{% static 'js/search_filters.js' %}"></script>
 {% endblock content %}
 
                     <!--{% if user.is_staff or user.is_superuser %}  

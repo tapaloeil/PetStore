@@ -33,6 +33,14 @@ h2,h3,h4{
     float: right;
 }
 
+.iconlist a {
+  text-decoration:none;
+}
+
+.iconlist a:hover span  {
+  color:#ee1051;
+}
+
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #ffffff;
     float: right;
@@ -421,6 +429,74 @@ div.block-layered-nav dd a.amshopby-attr, div.block-layered-nav dd a.amshopby-at
     display: block;
 }
 
+#SearchForm,#filter-content{
+  display: none;
+}
+
+
+div.block-layered-nav dd a.amshopby-attr:before, div.block-layered-nav dd a.amshopby-attr-selected:before, div.block-layered-nav li.amshopby-cat-multi a:before, div.block-layered-nav li.amshopby-cat-multiselected a:before {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    line-height: 15px;
+    border: 1px solid #b7b7b7;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: 2px;
+}
+
+div.block-layered-nav dd a.amshopby-attr:before, div.block-layered-nav li.amshopby-cat-multi a:before {
+    content: '';
+}
+
+div.block-layered-nav dd a.amshopby-attr:before {
+    content: '';
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 0;
+    top: 7px;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ol.amsopby-flag-clickfirst a {
+    color: #000000;
+    text-decoration: none;
+}
+
+ol.amsopby-flag-clickfirst a:hover {
+    color: #ee1051;
+    text-decoration: underline;
+}
+
+.reset-filter-button {
+    min-height: 40px;
+    padding: 0px 30px;
+    width: 100%;
+    white-space: normal;
+    background: #ee1051;
+    display: inline-block;
+    padding: 7px 15px;
+    border: 0;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: normal;
+    font-family: 'Lato-Regular', Verdana, Arial, sans-serif;
+    line-height: 19px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
+}
 
 @media (min-width: 771px){
   .block-layered-nav .block-content > dl > dt {
