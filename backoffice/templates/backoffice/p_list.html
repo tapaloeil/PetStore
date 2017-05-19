@@ -67,14 +67,14 @@
                       <a href="{% url 'p_detail' pk=product.pk %}"><img class="card-img-top img-responsive shake" src='{% thumbnail product.MainPhoto.image 250x250  %}' alt="Card image cap"></a>
                     {% endif %}
                 </div>
-              <div class="card-block">
-                <h4 class="card-title"><a href="{% url 'p_detail' pk=product.pk %}">{{ product.ProductName|truncatechars:60 }}</a></h4>
-                <ul class="list-group-card">
+                <div class="card-block">
+                    <h4 class="card-title"><a href="{% url 'p_detail' pk=product.pk %}">{{ product.ProductName|truncatechars:60 }}</a></h4>
+                    <ul class="list-group-card">
                         <li class="list-group-item-card justify-content-between">
                             {% if product.RefCount > 1 %}à partir de {% endif %}{{ product.MainProductReference.SellPrice }}
                         </li>
-                </ul>
-              </div>
+                    </ul>
+                </div>
             </div>
         </div>
         <div class="clearfix hidden-sm-up"></div>

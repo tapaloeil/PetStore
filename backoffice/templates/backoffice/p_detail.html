@@ -23,14 +23,12 @@
     				<div class="product-name">
 						<h1>{{ product.ProductName }}</h1>
     				</div>
-    				<div class="product-info">
+    				<!--<div class="product-info">
 						<div class="short-description">
 							{{ product.Description|safe|truncatewords:100 }}
 						</div>
-    				</div>
-    			</div>
-    			<div class="clearfix"></div>
-			    <div class="product-type-data">
+    				</div>-->
+    				<div class="product-type-data">
 					<div class="grouped-items-table-wrapper">
 						<table class="data-table grouped-items-table">
 							<thread>
@@ -69,8 +67,12 @@
 						</table>
 					</div>
 			    </div>
+    			</div>
+
+
 	       	</form>
 	    </div>
+	    <div class="clearfix"></div>
 	    <div class="product-collateral">
 	    	<div class="product-description">
 				{{ product.Description|safe }}
