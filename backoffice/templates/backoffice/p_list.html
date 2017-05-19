@@ -64,7 +64,7 @@
             <div class="card" >
                 <div class="card-image">
                     {% if product.MainPhoto is not None %}
-                      <a href="{% url 'p_detail' pk=product.pk %}"><img class="card-img-top img-responsive shake" src='{% thumbnail product.MainPhoto.image 250x250 crop %}' alt="Card image cap"></a>
+                      <a href="{% url 'p_detail' pk=product.pk %}"><img class="card-img-top img-responsive shake" src='{% thumbnail product.MainPhoto.image 250x250  %}' alt="Card image cap"></a>
                     {% endif %}
                 </div>
               <div class="card-block">
