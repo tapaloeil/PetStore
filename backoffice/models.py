@@ -129,8 +129,8 @@ class ProductImage(models.Model):
         height_field="height",
         upload_to=upload_location
         )
-    #image2=FilerImageField(
-    #    related_name="product_image")
+    image_filer=FilerImageField(
+        related_name="product_image")
     height=models.IntegerField(default=0)
     width=models.IntegerField(default=0)
     Product=models.ForeignKey('Product')
