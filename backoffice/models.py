@@ -124,12 +124,12 @@ def upload_location(instance, filename):
     return "Product/%s/%s" %(instance.Product.pk,filename)
 
 class ProductImage(models.Model):
-    image=models.ImageField(
-        width_field="width",
-        height_field="height",
-        upload_to=upload_location
-        )
-    image_filer=FilerImageField(
+    #image=models.ImageField(
+    #    width_field="width",
+    #    height_field="height",
+    #    upload_to=upload_location
+    #    )
+    image=FilerImageField(
         related_name="product_image")
     height=models.IntegerField(default=0)
     width=models.IntegerField(default=0)
