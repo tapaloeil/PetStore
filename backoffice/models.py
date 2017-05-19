@@ -11,6 +11,7 @@ from django.db.models.signals import pre_save,post_save
 from django.db.models import Count
 from django.utils.text import slugify
 from model_utils import FieldTracker
+from filer.fields.image import FilerImageField
 
 class ProductBrand(models.Model):
     Name=models.CharField(max_length=200,verbose_name='Marque')
@@ -93,7 +94,7 @@ class Product(models.Model):
         null=True)
     Tags=TaggableManager(blank=True)
     MainPhoto = models.ForeignKey(
-        "ProductImage", related_name='+', blank=True, null=True
+        "ProductImage", related_name='+', blank=True, null=True,on_delete=models.SET_NULL
         )
     MainProductReference = models.ForeignKey(
         "ProductReferences", related_name='+',blank=True,null=True
@@ -128,6 +129,8 @@ class ProductImage(models.Model):
         height_field="height",
         upload_to=upload_location
         )
+    image2=FilerImageField(
+        related_name="product_image")
     height=models.IntegerField(default=0)
     width=models.IntegerField(default=0)
     Product=models.ForeignKey('Product')

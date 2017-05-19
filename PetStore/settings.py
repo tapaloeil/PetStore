@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'django_countries',
     'measurement',
     'django_measurement',
+    'easy_thumbnails',
+    'filer',
+    'mptt',    
     'taggit',
     'backoffice',
 ]
@@ -264,6 +267,8 @@ JET_SIDE_MENU_COMPACT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
+
+THUMBNAIL_HIGH_RESOLUTION = True
 
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
