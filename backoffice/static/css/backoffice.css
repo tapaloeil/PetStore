@@ -65,8 +65,13 @@ h2,h3,h4{
     background-color: #fff;
     border: 0;
     border-radius: .25rem;
-    border: 1px solid rgba(0,0,0,.125);
+    border: 2px solid rgba(0,0,0,.125);
     border-radius: .25rem;
+}
+
+.card:hover{
+  border: 2px solid rgb(2, 117, 216);
+  cursor: pointer;
 }
 
 .card-img-top {

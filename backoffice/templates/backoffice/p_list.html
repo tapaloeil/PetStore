@@ -112,31 +112,11 @@
 </nav>
 {% endif %}
 <script src="{% static 'js/search_filters.js' %}"></script>
+<script type="text/javascript">
+    $(".card").click(function(event){
+        console.log($(this));
+        $(this).children('.card-image').children("a")[0].click();
+        //$(this).children('.card-block').children('.card-title').children('a').click();
+    })
+</script>
 {% endblock content %}
-
-                    <!--{% if user.is_staff or user.is_superuser %}  
-                        <li class="list-group-item-card justify-content-between">
-                                Brand :
-                                <span class="badge badge-default badge-pill">{{ product.Brand }}</span>
-                        </li>
-
-                        <li class="list-group-item-card justify-content-between">
-                            Buying Price :
-                            <div class="alignright">
-                                <span class="pricetag buyprice">{{ product.MainProductReference.BuyPrice }}</span>
-                            </div>
-                        </li>
-
-                        <li class="list-group-item-card justify-content-between">
-                            Selling Price : 
-                            <div class="alignright">
-                                <span class="pricetag sellprice">{{ product.MainProductReference.SellPrice }}</span>
-                            </div>
-                        </li>
-                        <li class="list-group-item-card justify-content-between">
-                            {% for Tag in product.Tags.all %}
-                                <span class="badge badge-pill badge-info badge-tag">{{ Tag }}</span>
-                            {% endfor %}
-                        </li>
-                    {% else %}-->
-                                        <!--{% endif %} --> 
