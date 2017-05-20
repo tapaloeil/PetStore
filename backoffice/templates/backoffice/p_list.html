@@ -62,13 +62,14 @@
     {% for product in products %}
         <div class="col-lg-4 col-md-4 col-xs-6 thumb">
             <div class="card" >
+                <a href="{% url 'p_detail' pk=product.pk %}"></a>
                 <div class="card-image">
                     {% if product.MainPhoto is not None %}
-                      <a href="{% url 'p_detail' pk=product.pk %}"><img class="card-img-top img-responsive shake" src='{% thumbnail product.MainPhoto.image 250x250  %}' alt="Card image cap"></a>
+                      <img class="card-img-top img-responsive shake" src='{% thumbnail product.MainPhoto.image 250x250  %}' alt="Card image cap">
                     {% endif %}
                 </div>
                 <div class="card-block">
-                    <h4 class="card-title"><a href="{% url 'p_detail' pk=product.pk %}">{{ product.ProductName|truncatechars:60 }}</a></h4>
+                    <h4 class="card-title">{{ product.ProductName|truncatechars:60 }}</h4>
                     <ul class="list-group-card">
                         <li class="list-group-item-card justify-content-between">
                             {% if product.RefCount > 1 %}à partir de {% endif %}{{ product.MainProductReference.SellPrice }}
@@ -113,10 +114,6 @@
 {% endif %}
 <script src="{% static 'js/search_filters.js' %}"></script>
 <script type="text/javascript">
-    $(".card").click(function(event){
-        console.log($(this));
-        $(this).children('.card-image').children("a")[0].click();
-        //$(this).children('.card-block').children('.card-title').children('a').click();
-    })
+    $(".card").click(function(event){ $(this).children("a")[0].click();  })
 </script>
 {% endblock content %}

@@ -74,6 +74,7 @@ h2,h3,h4{
   cursor: pointer;
 }
 
+
 .card-img-top {
     border-top-right-radius: calc(.25rem - 1px);
     border-top-left-radius: calc(.25rem - 1px);
@@ -189,7 +190,7 @@ h2,h3,h4{
     float:right;
 }
 
-.shake:hover{
+.card:hover .shake{
     animation-duration: 10s;
   animation-iteration-count: infinite;
   animation-name: verical-slow;
