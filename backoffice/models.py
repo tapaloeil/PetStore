@@ -19,17 +19,26 @@ class ProductBrand(models.Model):
     OriginCountry = CountryField(verbose_name="Pays d'origine")
     URL = models.URLField(max_length=1000,blank=True,null=True,verbose_name=('Liens vers le site'))
 
+    class Meta:
+        managed=True
+
     def __str__(self):
         return (self.Name)
 
 class ProductType(models.Model):
     Type=models.CharField(max_length=200,verbose_name='Catégorie de produits')
 
+    class Meta:
+        managed=True
+
     def __str__(self):
         return self.Type
 
 class ProductSubType(models.Model):
     SubType=models.CharField(max_length=200,verbose_name='Sous-atégorie de produits')
+
+    class Meta:
+        managed=True
 
     def __str__(self):
         return self.SubType
@@ -64,6 +73,7 @@ class ProductReferences(models.Model):
     Product=models.ForeignKey(
         'Product')
     class Meta:
+        managed=True
         verbose_name="Reference"
         verbose_name_plural='References'
 
@@ -118,6 +128,9 @@ class Product(models.Model):
     RefCount = models.SmallIntegerField(default=0,verbose_name="Références")
     tracker = FieldTracker()
 
+    class Meta:
+        managed=True
+
     def __str__(self):
         return self.ProductName
 
@@ -137,6 +150,7 @@ class ProductImage(models.Model):
     Product=models.ForeignKey('Product')
 
     class Meta:
+        managed=True
         verbose_name = "Images du produit"
         verbose_name_plural = "Images du produit"
 
@@ -152,6 +166,7 @@ class ProductLink(models.Model):
         )
 
     class Meta:
+        managed=True
         verbose_name = "Liens vers les sites de vente"
         verbose_name_plural = "Liens vers les sites de vente"
 
