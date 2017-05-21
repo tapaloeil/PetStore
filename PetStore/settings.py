@@ -81,6 +81,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -134,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr'
 
 TIME_ZONE = 'Europe/Paris'
 
@@ -278,14 +279,14 @@ THUMBNAIL_HIGH_RESOLUTION = True
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 LANGUAGES=(
-    ('en', _('English')),
     ('fr', _('French')),
+    ('en', _('English')),
     ('zh-hans', _('Simplified Chinese')),
     )
 
 MODELTRANSLATION_DEFAULT_LANGUAGE='fr'
 
-MODELTRANSLATION_LANGUAGES = ('en', 'zh-hans')
+MODELTRANSLATION_LANGUAGES = ('fr','en', 'zh-hans')
 
 MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'fr'
 
