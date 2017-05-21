@@ -34,7 +34,7 @@ CURRENCIES = ('USD','EUR','CNY','HKD', 'GBP','JPY')
 # Application definition
 
 INSTALLED_APPS = [
-    'modeltranslation',
+    #'modeltranslation',
     'storages',
     'moneyed',
     'djmoney',
