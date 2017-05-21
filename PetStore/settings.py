@@ -53,7 +53,7 @@ INSTALLED_APPS = [
     'django_measurement',
     'easy_thumbnails',
     'filer',
-    'mptt',    
+    'mptt',
     'taggit',
     'rosetta',
     'backoffice',
@@ -81,6 +81,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -94,22 +95,22 @@ WSGI_APPLICATION = 'PetStore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-#DATABASES = {
-#    'default':{
-#        'ENGINE':'django.db.backends.mysql',
-#        'NAME':'tapaloeil$PetStore',
-#        'USER':'tapaloeil',
-#        'PASSWORD':'Mars!2017',
-#        'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
-#    }
-#}
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    'default':{
+        'ENGINE':'django.db.backends.mysql',
+        'NAME':'tapaloeil$PetStore',
+        'USER':'tapaloeil',
+        'PASSWORD':'Mars!2017',
+        'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 
 
 # Password validation
@@ -134,7 +135,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr'
 
 TIME_ZONE = 'Europe/Paris'
 
@@ -281,11 +282,11 @@ LANGUAGES=(
     ('fr', _('French')),
     ('en', _('English')),
     ('zh-hans', _('Simplified Chinese')),
-    )
+)
 
-MODELTRANSLATION_DEFAULT_LANGUAGE='fr'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'fr'
 
-MODELTRANSLATION_LANGUAGES = ('fr','en', 'zh-hans')
+MODELTRANSLATION_LANGUAGES = ('fr', 'en', 'zh-hans')
 
 MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'fr'
 
