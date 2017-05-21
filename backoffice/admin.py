@@ -15,7 +15,7 @@ def duplicate_product(modeladmin, request, queryset):
         p.save()
     duplicate_product.short_description ="Duplicate product"
 
-class ProductBrandAdmin(admin.ModelAdmin):
+class ProductBrandAdmin(admin.ModelAdmin):#(admin.ModelAdmin):
     list_display=("pk","Name","OriginCountry","URL")
     list_display_links=("pk",)
     list_editable=("Name","OriginCountry","URL")
@@ -23,7 +23,7 @@ class ProductBrandAdmin(admin.ModelAdmin):
     def get_model_perms(self, request):
         return{}  
 
-class ProductTypeAdmin(TranslationAdmin):
+class ProductTypeAdmin(admin.ModelAdmin):#(TranslationAdmin):
     list_display=("pk","Type",)
     list_display_links=("pk",)
     list_editable=("Type",)
@@ -31,7 +31,7 @@ class ProductTypeAdmin(TranslationAdmin):
     def get_model_perms(self, request):
         return{}    
 
-class ProductSubTypeAdmin(TranslationAdmin):
+class ProductSubTypeAdmin(admin.ModelAdmin):#(TranslationAdmin):
     list_display=("pk","SubType",)
     list_display_links=("pk",)
     list_editable=("SubType",)
@@ -46,11 +46,11 @@ class ProductImageInline(CompactInline):
 class ProductLinkInline(CompactInline):
     model=ProductLink
 
-class ProductReferencesInline(TranslationStackedInline):
+class ProductReferencesInline(CompactInline):#(TranslationStackedInline):
     model=ProductReferences
 
 
-class ProductAdmin(TranslationAdmin):
+class ProductAdmin(admin.ModelAdmin):#(TranslationAdmin):
     actions = [duplicate_product]
     list_filter = ('Tags','ProductType','ProductSubType','Brand')#,'BuyPrice')
     search_fields = ['ProductName',]
