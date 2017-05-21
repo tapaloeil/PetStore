@@ -34,7 +34,7 @@ CURRENCIES = ('USD','EUR','CNY','HKD', 'GBP','JPY')
 # Application definition
 
 INSTALLED_APPS = [
-    #'modeltranslation',
+    'modeltranslation',
     'storages',
     'moneyed',
     'djmoney',
@@ -94,22 +94,22 @@ WSGI_APPLICATION = 'PetStore.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default':{
-        'ENGINE':'django.db.backends.mysql',
-        'NAME':'tapaloeil$PetStore',
-        'USER':'tapaloeil',
-        'PASSWORD':'Mars!2017',
-        'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
-    }
-}
-
 #DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    'default':{
+#        'ENGINE':'django.db.backends.mysql',
+#        'NAME':'tapaloeil$PetStore',
+#        'USER':'tapaloeil',
+#        'PASSWORD':'Mars!2017',
+#        'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
 #    }
 #}
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 
 # Password validation
