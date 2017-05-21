@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -53,13 +54,14 @@ INSTALLED_APPS = [
     'filer',
     'mptt',    
     'taggit',
+    'rosetta',
     'backoffice',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -273,6 +275,14 @@ THUMBNAIL_HIGH_RESOLUTION = True
 #DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+LANGUAGES=(
+    ('en', _('English')),
+    ('fr', _('French')),
+    ('zh-hans', _('Simplified Chinese')),
+    )
+
+LOCALE_PATHS = (os.path.join(BASE_DIR,"locale"),)
 
 DEBUG = True
 

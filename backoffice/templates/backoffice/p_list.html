@@ -1,12 +1,13 @@
 {% extends 'backoffice/base.html' %}
 {% load static %}
 {% load thumbnail %}
+{% load i18n %}
 {% block content %}
 
 <div class="col-left sidebar col-left-first">
     <div class="block block-layered-nav amshopby-overflow-scroll-enabled amshopby-collapse-enabled amshopby-filters-left block-layered-nav amshopby-overflow-scroll-enabled amshopby-collapse-enabled amshopby-filters-left--no-filters">
         <div class="block-title">
-            <strong><span>Filtres disponibles</span></strong>
+            <strong><span>{% trans "Filtres disponibles" %}</span></strong>
         </div>
         <div class="block-content toggle-content">
             <p class="block-subtitle block-subtitle--filter">Filtre</p>
@@ -16,7 +17,7 @@
             </form>
             <dl id="narrow-by-list">
                 <dt>
-                    Catégorie
+                    {% trans "Catégorie" %}
                 </dt>
                 <dd>
                     <ol class="amsopby-flag-clickfirst filter-add">
@@ -28,7 +29,7 @@
                     </ol>
                 </dd>
                 <dt>
-                    Type de produit
+                    {% trans "Type de produit" %}
                 </dt>
                 <dd>
                     <ol class="amsopby-flag-clickfirst filter-add">
@@ -41,7 +42,7 @@
                     </ol>
                 </dd>
                 <dt>
-                    Marque
+                    {% trans "Marque" %}
                 </dt>
                 <dd>
                     <ol class="amsopby-flag-clickfirst filter-add">
@@ -72,7 +73,7 @@
                     <h4 class="card-title">{{ product.ProductName|truncatechars:60 }}</h4>
                     <ul class="list-group-card">
                         <li class="list-group-item-card justify-content-between">
-                            {% if product.RefCount > 1 %}à partir de {% endif %}{{ product.MainProductReference.SellPrice }}
+                            {% if product.RefCount > 1 %}{% trans "à partir de" %} {% endif %}{{ product.MainProductReference.SellPrice }}
                         </li>
                     </ul>
                 </div>
@@ -89,7 +90,7 @@
   <ul class="pagination justify-content-center">
     {% if products.has_previous == False %}
         <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">Previous</a>
+            <a class="page-link" href="#" tabindex="-1">{% trans "Previous" %}</a>
         </li>
     {% else %}
         <li class="page-item">
@@ -108,7 +109,7 @@
     {% if products.has_next %}
       <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">Next</a></li>
     {% else %}
-      <li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+      <li class="page-item disabled"><a class="page-link" href="#">{% trans "Next" %}</a></li>
     {% endif %}
 </nav>
 {% endif %}

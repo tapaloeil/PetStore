@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-21 13:46+0200\n"
+"PO-Revision-Date: 2017-05-21 13:47+0009\n"
+"Last-Translator: b'  <>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Translated-Using: django-rosetta 0.7.13\n"
+
+#: backoffice/templates/backoffice/base.html:35
+msgid "Paris Pet Store"
+msgstr "Mon magasin"
+
+#: backoffice/templates/backoffice/p_list.html:9
+msgid "Filtres disponibles"
+msgstr "Filtres disponibles"
+
+#: backoffice/templates/backoffice/p_list.html:19
+msgid "Catégorie"
+msgstr "Catégorie"
+
+#: backoffice/templates/backoffice/p_list.html:31
+msgid "Type de produit"
+msgstr "Type de produit"
+
+#: backoffice/templates/backoffice/p_list.html:44
+msgid "Marque"
+msgstr "Marque"
+
+#: backoffice/templates/backoffice/p_list.html:75
+msgid "à partir de"
+msgstr "à partir de"
+
+#: backoffice/templates/backoffice/p_list.html:92
+msgid "Previous"
+msgstr "Précédent"
+
+#: backoffice/templates/backoffice/p_list.html:111
+msgid "Next"
+msgstr "Suivant"

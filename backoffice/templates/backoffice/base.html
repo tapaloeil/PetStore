@@ -1,5 +1,6 @@
 {% load staticfiles %}
 {% load static %}
+{% load i18n %}
 <html>
     <head>
         <title>Paris Pet Store</title>
@@ -31,7 +32,7 @@
                 <a href="admin/login/?next=/" class="top-menu"><span class="icon-key fs3"></span></a>
             {% endif %}
             </div>
-            <h1><a href="/">Paris Pet Store</a></h1>
+            <h1><a href="/">{% trans "Paris Pet Store" %}</a></h1>
         </div>
             {% block content %}
             {% endblock %}

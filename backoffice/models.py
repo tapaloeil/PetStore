@@ -12,11 +12,12 @@ from django.db.models import Count
 from django.utils.text import slugify
 from model_utils import FieldTracker
 from filer.fields.image import FilerImageField
+from django.utils.translation import ugettext_lazy as _
 
 class ProductBrand(models.Model):
     Name=models.CharField(max_length=200,verbose_name='Marque')
     OriginCountry = CountryField(verbose_name="Pays d'origine")
-    URL = models.URLField(max_length=1000,blank=True,null=True,verbose_name='Liens vers le site')
+    URL = models.URLField(max_length=1000,blank=True,null=True,verbose_name=('Liens vers le site'))
 
     def __str__(self):
         return (self.Name)
