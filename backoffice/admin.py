@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import ProductType,ProductSubType,Product,ProductBrand,ProductImage,ProductLink,ProductReferences
 from jet.admin import CompactInline
 from django.db.models import Count
+from modeltranslation.admin import TranslationAdmin,TranslationStackedInline
 
 import copy
 
@@ -22,7 +23,7 @@ class ProductBrandAdmin(admin.ModelAdmin):
     def get_model_perms(self, request):
         return{}  
 
-class ProductTypeAdmin(admin.ModelAdmin):
+class ProductTypeAdmin(TranslationAdmin):
     list_display=("pk","Type",)
     list_display_links=("pk",)
     list_editable=("Type",)
@@ -30,7 +31,7 @@ class ProductTypeAdmin(admin.ModelAdmin):
     def get_model_perms(self, request):
         return{}    
 
-class ProductSubTypeAdmin(admin.ModelAdmin):
+class ProductSubTypeAdmin(TranslationAdmin):
     list_display=("pk","SubType",)
     list_display_links=("pk",)
     list_editable=("SubType",)
@@ -45,11 +46,11 @@ class ProductImageInline(CompactInline):
 class ProductLinkInline(CompactInline):
     model=ProductLink
 
-class ProductReferencesInline(CompactInline):
+class ProductReferencesInline(TranslationStackedInline):
     model=ProductReferences
 
 
-class ProductAdmin(admin.ModelAdmin):
+class ProductAdmin(TranslationAdmin):
     actions = [duplicate_product]
     list_filter = ('Tags','ProductType','ProductSubType','Brand')#,'BuyPrice')
     search_fields = ['ProductName',]
@@ -89,7 +90,6 @@ class ProductAdmin(admin.ModelAdmin):
         #return obj.MainProductReference.Measure
     #get_MainProductWeight.admin_order_field="Référence - Poids"
     get_MainProductWeight.short_description="Référence - Poids"
-
 
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductBrand,ProductBrandAdmin)

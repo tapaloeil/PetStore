@@ -3,13 +3,7 @@ function buildFilterMenu(item){
 		$(".filter-add > li[data-filter-dest='"+ item[0] +"'][data-text='"+item[1]+"']").children("a").removeClass("amshopby-attr");
 		$(".filter-add > li[data-filter-dest='"+ item[0] +"'][data-text='"+item[1]+"']").children("a").addClass("amshopby-attr-selected");
 
-		if ( !$( "#resetFilterButton" ).length ) {
-			$(".amshopby-filters-left").append('<button id="resetFilterButton" type="button" title="Réinitialiser les filtres" class="reset-filter-button"><span>Réinitialiser les filtres</span></button>');
-			$("#resetFilterButton").click(function(event) {
-				$("#q").val("");
-				$("#SearchForm").submit();
-			});
-		}
+		$("#resetFilterButton").css("display","block");
 	}
 }
 
@@ -23,6 +17,10 @@ function getJsonFromUrl(query) {
 }
 
 $(document).ready(function() {
+    $("#resetFilterButton").click(function(event) {
+        $("#q").val("");
+        $("#SearchForm").submit();
+    });
 	getJsonFromUrl($("#q").val());
 	$('.amsopby-flag-clickfirst > li').click(function(event) {
 		var dataset = $(this)[0].dataset;

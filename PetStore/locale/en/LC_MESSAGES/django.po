@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-21 14:23+0200\n"
-"PO-Revision-Date: 2017-05-21 14:24+0009\n"
+"POT-Creation-Date: 2017-05-21 20:08+0200\n"
+"PO-Revision-Date: 2017-05-21 19:36+0009\n"
 "Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -18,14 +18,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Translated-Using: django-rosetta 0.7.13\n"
 
-#: PetStore/local_settings.py:264 PetStore/settings.py:280
-msgid "English"
-msgstr "English"
-
-#: PetStore/local_settings.py:265 PetStore/settings.py:281
+#: PetStore/local_settings.py:265 PetStore/settings.py:282
 msgid "French"
 msgstr "French"
 
-#: PetStore/local_settings.py:266 PetStore/settings.py:282
+#: PetStore/local_settings.py:266 PetStore/settings.py:281
+msgid "English"
+msgstr "English"
+
+#: PetStore/local_settings.py:267 PetStore/settings.py:283
 msgid "Simplified Chinese"
 msgstr "Simplified Chinese"

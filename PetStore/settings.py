@@ -34,6 +34,7 @@ CURRENCIES = ('USD','EUR','CNY','HKD', 'GBP','JPY')
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'storages',
     'moneyed',
     'djmoney',
@@ -281,6 +282,12 @@ LANGUAGES=(
     ('fr', _('French')),
     ('zh-hans', _('Simplified Chinese')),
     )
+
+MODELTRANSLATION_DEFAULT_LANGUAGE='fr'
+
+MODELTRANSLATION_LANGUAGES = ('en', 'zh-hans')
+
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'fr'
 
 LOCALE_PATHS = (os.path.join(BASE_DIR,"locale"),)
 

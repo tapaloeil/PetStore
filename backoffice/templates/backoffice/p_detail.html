@@ -1,5 +1,6 @@
 {% extends 'backoffice/base.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 <script type="text/javascript" src="{% static 'js/3rdParty/jquery-1.7.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/3rdParty/jquery.ui.core.min.js' %}"></script>
@@ -33,9 +34,9 @@
 						<table class="data-table grouped-items-table">
 							<thread>
 								<tr class="first last">
-									<th class="name">Nom du produit</th>
-									<th class="price">Prix</th>
-									<th class="qty">Quantité</th>
+									<th class="name">{% trans "Nom du produit" %}</th>
+									<th class="price">{% trans "Prix" %}</th>
+									<th class="qty">{% trans "Quantité" %}</th>
 								</tr>
 								<tbody>
 									{% for ref in references %}
@@ -58,7 +59,7 @@
 									<tr class="first last">
 										<td colspan="3" class="last">
 											<div class="add-to-cart-buttons">
-												<button type="button" title="Ajouter au panier" class="button btn-cart"><span>Ajouter au panier</span></button>
+												<button type="button" title="Ajouter au panier" class="button btn-cart"><span>{% trans "Ajouter au panier" %}</span></button>
 											</div>
 										</td>
 									</tr>
