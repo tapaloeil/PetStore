@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-21 13:46+0200\n"
+"POT-Creation-Date: 2017-05-21 14:23+0200\n"
 "PO-Revision-Date: 2017-05-21 13:41+0009\n"
 "Last-Translator: b'  <>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,30 +22,32 @@ msgstr ""
 msgid "Paris Pet Store"
 msgstr ""
 
-#: backoffice/templates/backoffice/p_list.html:9
+#: backoffice/templates/backoffice/p_list.html:10
 msgid "Filtres disponibles"
 msgstr ""
 
-#: backoffice/templates/backoffice/p_list.html:19
+#: backoffice/templates/backoffice/p_list.html:20
 msgid "Catégorie"
 msgstr ""
 
-#: backoffice/templates/backoffice/p_list.html:31
+#: backoffice/templates/backoffice/p_list.html:32
 msgid "Type de produit"
 msgstr ""
 
-#: backoffice/templates/backoffice/p_list.html:44
+#: backoffice/templates/backoffice/p_list.html:45
 msgid "Marque"
 msgstr ""
 
-#: backoffice/templates/backoffice/p_list.html:75
+#: backoffice/templates/backoffice/p_list.html:76
 msgid "à partir de"
 msgstr ""
 
-#: backoffice/templates/backoffice/p_list.html:92
+#: backoffice/templates/backoffice/p_list.html:93
+#: backoffice/templates/backoffice/p_list.html:97
 msgid "Previous"
 msgstr ""
 
-#: backoffice/templates/backoffice/p_list.html:111
+#: backoffice/templates/backoffice/p_list.html:110
+#: backoffice/templates/backoffice/p_list.html:112
 msgid "Next"
 msgstr ""
