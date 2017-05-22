@@ -11,7 +11,7 @@ from functools import reduce
 # Create your views here.
 def p_list(request):
     ## Récup des données ##
-    p_list = Product.objects.all()
+    p_list = Product.objects.all().order_by("ProductName")
     pt_list = ProductType.objects.all().order_by("Type")
     pst_list=ProductSubType.objects.all().order_by("SubType")
     pb_list=ProductBrand.objects.all().order_by("Name")
