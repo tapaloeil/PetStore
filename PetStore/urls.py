@@ -23,6 +23,7 @@ admin.site.site_header='PetStore Administration'
 admin.site.site_title='PetStore Administration'
 
 urlpatterns = i18n_patterns(
+    url(r'^accounts/',include('registration.backends.default.urls')),
     url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     url(r'^admin/', admin.site.urls,name='admin'),
     url(r'', include('backoffice.urls')),
