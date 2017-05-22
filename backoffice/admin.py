@@ -20,24 +20,24 @@ class ProductBrandAdmin(admin.ModelAdmin):#(admin.ModelAdmin):
     list_display_links=("pk",)
     list_editable=("Name","OriginCountry","URL")
 
-    def get_model_perms(self, request):
-        return{}  
+    #def get_model_perms(self, request):
+    #    return{}  
 
 class ProductTypeAdmin(TranslationAdmin):
     list_display=("pk","Type",)
     list_display_links=("pk",)
     list_editable=("Type",)
 
-    def get_model_perms(self, request):
-        return{}    
+    #def get_model_perms(self, request):
+    #    return{}    
 
 class ProductSubTypeAdmin(TranslationAdmin):
     list_display=("pk","SubType",)
     list_display_links=("pk",)
     list_editable=("SubType",)
 
-    def get_model_perms(self, request):
-        return{}  
+    #def get_model_perms(self, request):
+    #    return{}  
 
 class ProductImageInline(CompactInline):
     model=ProductImage
@@ -71,7 +71,6 @@ class ProductAdmin(TranslationAdmin):
             return obj.MainProductReference.BuyPrice
         else:
             return "--"
-    #get_MainProductBuyPrice.admin_order_field="Référence - Prix d'achat"
     get_MainProductBuyPrice.short_description="Référence - Prix d'achat"
 
     def get_MainProductSellPrice(self,obj):
@@ -79,7 +78,6 @@ class ProductAdmin(TranslationAdmin):
             return obj.MainProductReference.SellPrice
         else:
             return "--"
-    #get_MainProductSellPrice.admin_order_field="Référence - Prix de vente"
     get_MainProductSellPrice.short_description="Référence - Prix de vente"
 
     def get_MainProductWeight(self,obj):
@@ -87,8 +85,6 @@ class ProductAdmin(TranslationAdmin):
             return u"%s %s" % (obj.MainProductReference.Measure,obj.MainProductReference.MeasureUnit)
         else:
             return "--"            
-        #return obj.MainProductReference.Measure
-    #get_MainProductWeight.admin_order_field="Référence - Poids"
     get_MainProductWeight.short_description="Référence - Poids"
 
 admin.site.register(Product, ProductAdmin)
