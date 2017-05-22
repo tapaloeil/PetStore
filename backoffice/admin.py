@@ -23,7 +23,7 @@ class ProductBrandAdmin(admin.ModelAdmin):#(admin.ModelAdmin):
     def get_model_perms(self, request):
         return{}  
 
-class ProductTypeAdmin(admin.ModelAdmin):#(TranslationAdmin):
+class ProductTypeAdmin(TranslationAdmin):
     list_display=("pk","Type",)
     list_display_links=("pk",)
     list_editable=("Type",)
@@ -31,7 +31,7 @@ class ProductTypeAdmin(admin.ModelAdmin):#(TranslationAdmin):
     def get_model_perms(self, request):
         return{}    
 
-class ProductSubTypeAdmin(admin.ModelAdmin):#(TranslationAdmin):
+class ProductSubTypeAdmin(TranslationAdmin):
     list_display=("pk","SubType",)
     list_display_links=("pk",)
     list_editable=("SubType",)
@@ -46,11 +46,11 @@ class ProductImageInline(CompactInline):
 class ProductLinkInline(CompactInline):
     model=ProductLink
 
-class ProductReferencesInline(CompactInline):#(TranslationStackedInline):
+class ProductReferencesInline(TranslationStackedInline):
     model=ProductReferences
 
 
-class ProductAdmin(admin.ModelAdmin):#(TranslationAdmin):
+class ProductAdmin(TranslationAdmin):
     actions = [duplicate_product]
     list_filter = ('Tags','ProductType','ProductSubType','Brand')#,'BuyPrice')
     search_fields = ['ProductName',]
