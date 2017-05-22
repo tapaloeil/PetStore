@@ -2,6 +2,12 @@
 {% load static %}
 {% load thumbnail %}
 {% load i18n %}
+{% block head %}
+<link type="text/css" rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'css/jquery-ui.structure.min.css' %}" />
+<link type="text/css" rel="stylesheet" href="{% static 'css/jquery-ui.theme.min.css' %}" />
+<script type="text/javascript" src="{% static 'js/3rdParty/jquery-ui.min.js' %}"></script>
+{% endblock %}
 {% block content %}
 
 <div class="col-left sidebar col-left-first">
@@ -53,6 +59,22 @@
                             </li>
                         {% endfor %}
                     </ol>
+                </dd>
+                <dt>
+                    {% trans "Prix" %}
+                </dt>
+                <dd>
+                    <ol>
+                        <li>
+                            <div id="amshopby-price-ui" class="amshopby-slider-ui"></div>
+                            <div class="amshopby-slider-price amshopby-slider-price-from">
+                                <span id="ampshopby-price-from-slider">0</span>
+                            </div>
+                            <div class="amshopby-slider-price amshopby-slider-price-to">
+                                <span id="amshopby-price-to-slider">1500</span>
+                            </div>
+                        </li>
+                    </ol>
                 </dd>                
             </dl>
             <button id="resetFilterButton" type="button" title="Réinitialiser les filtres" class="reset-filter-button" style="display:none;"><span>{% trans "Réinitialiser les filtres" %}</span></button>
@@ -60,6 +82,7 @@
     </div>    
 </div>
 <div class="col-sm-9 offset-sm-3">
+
     <div class='row'>
     {% for product in products %}
         <div class="col-lg-4 col-md-4 col-xs-6 thumb">
@@ -84,38 +107,53 @@
     {% cycle "" "" "</div><div class='row'>" %}
     {% endfor %}
     </div>
-</div>
-
-{% if products.has_previous or products.has_next %}
-<nav aria-label="...">
-  <ul class="pagination justify-content-center">
-    {% if products.has_previous == False %}
-        <li class="page-item disabled">
-            <a class="page-link" href="#" tabindex="-1">{% trans "Previous" %}</a>
-        </li>
-    {% else %}
-        <li class="page-item">
-            <a class="page-link" href="?page={{ products.previous_page_number }}" tabindex="-1">{% trans "Previous" %}</a>
-        </li>    
-    {% endif %}
-    {% for i in products.paginator.page_range %}
-        {% if products.number == i %}
-            <li class="page-item active">
-                <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
+    {% if products.has_previous or products.has_next %}
+    <nav aria-label="navigation" class="nav-navigation">
+      <ul class="pagination justify-content-center">
+        {% if products.has_previous == False %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1">{% trans "Previous" %}</a>
             </li>
         {% else %}
-            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ products.previous_page_number }}" tabindex="-1">{% trans "Previous" %}</a>
+            </li>    
         {% endif %}
-    {% endfor %}
-    {% if products.has_next %}
-      <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">{% trans "Next" %}</a></li>
-    {% else %}
-      <li class="page-item disabled"><a class="page-link" href="#">{% trans "Next" %}</a></li>
+        {% for i in products.paginator.page_range %}
+            {% if products.number == i %}
+                <li class="page-item active">
+                    <a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a>
+                </li>
+            {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+            {% endif %}
+        {% endfor %}
+        {% if products.has_next %}
+          <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">{% trans "Next" %}</a></li>
+        {% else %}
+          <li class="page-item disabled"><a class="page-link" href="#">{% trans "Next" %}</a></li>
+        {% endif %}
+    </nav>
     {% endif %}
-</nav>
-{% endif %}
+</div>
+
+
 <script src="{% static 'js/search_filters.js' %}"></script>
 <script type="text/javascript">
-    $(".card").click(function(event){ $(this).children("a")[0].click();  })
+    $(document).ready(function() {
+        $(".card").click(function(event){ $(this).children("a")[0].click();  });
+        $("#amshopby-price-ui").slider({
+            range: true,
+            min: 0,
+            max: 1500,
+            step: 10,
+            values: [ 0, 1500 ],
+            slide: function( event, ui ) {
+                $("#ampshopby-price-from-slider").html(ui.values[ 0 ]);
+                $("#amshopby-price-to-slider").html(ui.values[ 1 ]);
+                //$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            }
+        })
+    });
 </script>
 {% endblock content %}

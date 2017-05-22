@@ -511,6 +511,22 @@ ol.amsopby-flag-clickfirst a:hover {
     white-space: nowrap;
 }
 
+.nav-navigation{
+  margin-bottom: 20px;
+}
+
+.amshopby-slider-price-from {
+    float: left;
+}
+
+.amshopby-slider-price-to {
+    float: right;
+}
+
+.amshopby-slider-price {
+    color: #798794;
+}
+
 @media (min-width: 771px){
   .block-layered-nav .block-content > dl > dt {
       padding-left: 10px;
