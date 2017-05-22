@@ -88,17 +88,20 @@ class Product(models.Model):
     ProductType=models.ForeignKey(
         'ProductType',
         on_delete=models.CASCADE,
-        verbose_name='Catégorie de produit'
+        verbose_name='Catégorie de produit',
+        db_index=True
         )
     ProductSubType=models.ForeignKey(
         'ProductSubType',
         on_delete=models.CASCADE,
-        verbose_name='Type de produit'
+        verbose_name='Type de produit',
+        db_index=True
         )
     Brand=models.ForeignKey(
             'ProductBrand',
             on_delete=models.CASCADE,
-            verbose_name='Marque'
+            verbose_name='Marque',
+            db_index=True
         )
     Description = HTMLField(
         blank=True,
