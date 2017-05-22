@@ -20,6 +20,6 @@ translator.register(ProductReferences,ProductReferencesTranslationOptions)
 
 class ProductTranslationOptions(TranslationOptions):
     fields=("ProductName","Description")
-    fallback_values = 'à traduire !'
+    fallback_values = 'à traduire'
 
 translator.register(Product,ProductTranslationOptions)
