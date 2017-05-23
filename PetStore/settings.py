@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'braces',
     'jet',
     'django.contrib.admin',
+    #'django.contrib.sites',
     'registration',
     'django.contrib.auth',
     'django.contrib.contenttypes',

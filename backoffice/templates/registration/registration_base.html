@@ -1,0 +1,33 @@
+{% load static %}
+{% load i18n %}
+<html>
+    <head>
+        <title>Paris Pet Store</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/backoffice.css' %}">
+        <link rel="stylesheet" href="{% static 'css/p_detail.css' %}">
+        <link type="text/css" rel="stylesheet" href="{% static 'css/rcarousel.css' %}" />
+        <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+        <script type="text/javascript" src="{% static 'js/3rdParty/jquery-1.7.1.min.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<link type="text/css" rel="stylesheet" href="{% static 'css/registration.css' %}" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% block head %}
+        {% endblock %} 
+    </head>
+    <body>
+
+        <div class="content container">
+        <div class="page-header" id="page-header">
+            <h1><a href="/">{% trans "Paris Pet Store" %}</a></h1>
+        </div>
+            {% block content %}
+            {% endblock %}
+        </div>
+        {% block footer %}{% endblock footer %}
+        <script type="text/javascript" src="{% static 'js/fixscroll.js' %}"></script>
+    </body>
+</html>

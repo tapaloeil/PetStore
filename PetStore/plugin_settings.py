@@ -125,3 +125,7 @@ JET_SIDE_MENU_COMPACT = True
 
 # easy thumbnail / filer
 THUMBNAIL_HIGH_RESOLUTION = True
+
+
+#Crispy FORM TAGs SETTINGS
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
