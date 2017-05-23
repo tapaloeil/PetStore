@@ -132,8 +132,9 @@ EMAIL_HOST_USER = 'paris.pet.store.test@gmail.com'
 EMAIL_HOST_PASSWORD = 'Accenture1'
 EMAIL_USE_TLS = True
 
+from .plugin_settings import *
+
 try:
     from .local_settings import *
-    from .plugin_settings import *
 except ImportError:
     pass
