@@ -161,12 +161,13 @@ MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'cdn/media')
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'testing@example.com'
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
-EMAIL_PORT = 1025
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'no-reply@paris-pet-store.fr'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'paris.pet.store.test@gmail.com'
+EMAIL_HOST_PASSWORD = 'Accenture1'
+EMAIL_USE_TLS = True
 
 # TinyMCE
 TINYMCE_JS_URL = STATIC_URL + "tiny_mce/tiny_mce.js"
