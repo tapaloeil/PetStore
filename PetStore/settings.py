@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     'jet',
     'django.contrib.admin',
     #'django.contrib.sites',
-    'registration',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -48,6 +47,8 @@ INSTALLED_APPS = [
     'taggit',
     'rosetta',
     'backoffice',
+    'registration',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
