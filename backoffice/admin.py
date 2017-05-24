@@ -23,6 +23,7 @@ class ProductSubTypeResource(resources.ModelResource):
 class ProductResource(resources.ModelResource):
     class Meta:
         model=Product
+        exclude = ('MainPhoto', 'MainProductReference' )
 
 class ProductImageResource(resources.ModelResource):
     class Meta:
