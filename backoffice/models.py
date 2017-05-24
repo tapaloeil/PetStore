@@ -113,21 +113,21 @@ class Product(models.Model):
     MainProductReference = models.ForeignKey(
         "ProductReferences", related_name='+',blank=True,null=True
         )
-    Weight = MeasurementField(measurement=Weight,unit_choices=(("g","g"),("kg","kg")),null=True,blank=True, verbose_name="Poids (remplacé par Référence produit, à inactiver)")
-    BuyPrice = MoneyField(
-        max_digits=10,
-        decimal_places=2, 
-        default_currency='EUR',
-        blank=True,
-        null=True,
-        verbose_name="Prix d'achat (remplacé par Référence produit, à inactiver)")
-    SellPrice = MoneyField(
-        max_digits=10,
-        decimal_places=2, 
-        default_currency='EUR',
-        blank=True,
-        null=True,
-        verbose_name='Prix de vente (remplacé par Référence produit, à inactiver)')
+#    Weight = MeasurementField(measurement=Weight,unit_choices=(("g","g"),("kg","kg")),null=True,blank=True, verbose_name="Poids (remplacé par Référence produit, à inactiver)")
+#    BuyPrice = MoneyField(
+#        max_digits=10,
+#        decimal_places=2, 
+#        default_currency='EUR',
+#        blank=True,
+#        null=True,
+#        verbose_name="Prix d'achat (remplacé par Référence produit, à inactiver)")
+#    SellPrice = MoneyField(
+#        max_digits=10,
+#        decimal_places=2, 
+#        default_currency='EUR',
+#        blank=True,
+#        null=True,
+#        verbose_name='Prix de vente (remplacé par Référence produit, à inactiver)')
     RefCount = models.SmallIntegerField(default=0,verbose_name="Références")
     tracker = FieldTracker()
 
