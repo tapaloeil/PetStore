@@ -88,13 +88,24 @@ TEMPLATES = [
 WSGI_APPLICATION = 'PetStore.wsgi.application'
 
 # Database
+#DATABASES = {
+#    'default':{
+#        'ENGINE':'django.db.backends.mysql',
+#        'NAME':'tapaloeil$PetStore',
+#        'USER':'tapaloeil',
+#        'PASSWORD':'Mars!2017',
+#        'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
+#    }
+#}
+
+# Database
 DATABASES = {
     'default':{
         'ENGINE':'django.db.backends.mysql',
-        'NAME':'tapaloeil$PetStore',
-        'USER':'tapaloeil',
+        'NAME':'parispetstore$PetStore',
+        'USER':'parispetstore',
         'PASSWORD':'Mars!2017',
-        'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
+        'HOST':'parispetstore.mysql.pythonanywhere-services.com',
     }
 }
 
