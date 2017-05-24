@@ -91,6 +91,8 @@ class ProductLinkAdmin(ImportExportModelAdmin):
 class ProductReferencesInline(TranslationStackedInline):
     model=ProductReferences
 
+class ProductReferencesAdmin(ImportExportModelAdmin):
+    model=ProductReferencesResource
 
 class ProductAdmin(TranslationAdmin,ImportExportModelAdmin):
     actions = [duplicate_product]
@@ -137,3 +139,4 @@ admin.site.register(ProductType,ProductTypeAdmin)
 admin.site.register(ProductSubType,ProductSubTypeAdmin)
 admin.site.register(ProductImage,ProductImageAdmin)
 admin.site.register(ProductLink,ProductLinkAdmin)
+admin.site.register(ProductReferences,ProductReferencesAdmin)
