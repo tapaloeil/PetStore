@@ -23,7 +23,7 @@ class ProductSubTypeResource(resources.ModelResource):
 class ProductResource(resources.ModelResource):
     class Meta:
         model=Product
-        exclude = ('MainPhoto', 'MainProductReference' )
+        fields = ('id', 'slug', 'ProductName', 'ProductName_fr', 'ProductName_en', 'ProductName_zh_hans', 'ProductType', 'ProductSubType', 'Brand', 'Description', 'Description_fr', 'Description_en', 'Description_zh_hans', 'Tags')
 
 class ProductImageResource(resources.ModelResource):
     class Meta:
@@ -101,6 +101,7 @@ class ProductAdmin(TranslationAdmin,ImportExportModelAdmin):
     inlines = (ProductReferencesInline,ProductImageInline,ProductLinkInline)
     exclude=("Weight","BuyPrice","SellPrice","RefCount","slug", "MainPhoto", "MainProductReference")
     js=['tiny_mce/tiny_mce.js',]
+    resource_class=ProductResource
 
     def get_queryset(self, request):
         return super(ProductAdmin, self).get_queryset(request).prefetch_related('Tags')
