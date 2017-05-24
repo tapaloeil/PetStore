@@ -26,7 +26,7 @@ from django.contrib.auth.views import (
    password_reset_confirm,
    password_reset_complete
 )
-from registration.views import RegistrationView
+#from registration.views import RegistrationView
 
 admin.site.site_header='PetStore Administration'
 admin.site.site_title='PetStore Administration'
@@ -45,7 +45,7 @@ urlpatterns = i18n_patterns(
     url(r'', include('backoffice.urls')),
     url(r'^tinymce/',include('tinymce.urls')),
     url(r'^rosetta/',include('rosetta.urls')),
-    url(r'^accounts/',include('registration.backends.default.urls')), 
+    #url(r'^accounts/',include('registration.backends.default.urls')), 
 )
 
 if settings.DEBUG:

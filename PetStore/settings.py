@@ -30,8 +30,9 @@ INSTALLED_APPS = [
     'djmoney',
     'braces',
     'jet',
+#    'AuthEmail',    
     'django.contrib.admin',
-    #'django.contrib.sites',
+    'django.contrib.sites',  
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -47,8 +48,9 @@ INSTALLED_APPS = [
     'taggit',
     'rosetta',
     'backoffice',
-    'registration',
     'crispy_forms',
+    'import_export',    
+    #'registration',    
 ]
 
 MIDDLEWARE = [

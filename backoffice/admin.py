@@ -3,8 +3,38 @@ from .models import ProductType,ProductSubType,Product,ProductBrand,ProductImage
 from jet.admin import CompactInline
 from django.db.models import Count
 from modeltranslation.admin import TranslationAdmin,TranslationStackedInline
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin
 
 import copy
+
+class ProductBrandResource(resources.ModelResource):
+    class Meta:
+        model=ProductBrand
+
+class ProductTypeResource(resources.ModelResource):
+    class Meta:
+        model=ProductType
+
+class ProductSubTypeResource(resources.ModelResource):
+    class Meta:
+        model=ProductSubType
+
+class ProductResource(resources.ModelResource):
+    class Meta:
+        model=Product
+
+class ProductImageResource(resources.ModelResource):
+    class Meta:
+        model=ProductImage
+
+class ProductLinkResource(resources.ModelResource):
+    class Meta:
+        model=ProductLink
+
+class ProductReferencesResource(resources.ModelResource):
+    class Meta:
+        model=ProductReferences
 
 def duplicate_product(modeladmin, request, queryset):
     for p in queryset:
@@ -15,26 +45,29 @@ def duplicate_product(modeladmin, request, queryset):
         p.save()
     duplicate_product.short_description ="Duplicate product"
 
-class ProductBrandAdmin(admin.ModelAdmin):#(admin.ModelAdmin):
+class ProductBrandAdmin(ImportExportModelAdmin):#(admin.ModelAdmin):
     list_display=("pk","Name","OriginCountry","URL")
     list_display_links=("pk",)
     list_editable=("Name","OriginCountry","URL")
+    resource_class=ProductBrandResource
 
     #def get_model_perms(self, request):
     #    return{}  
 
-class ProductTypeAdmin(TranslationAdmin):
+class ProductTypeAdmin(TranslationAdmin,ImportExportModelAdmin):
     list_display=("pk","Type",)
     list_display_links=("pk",)
     list_editable=("Type",)
+    resource_class=ProductTypeResource
 
     #def get_model_perms(self, request):
     #    return{}    
 
-class ProductSubTypeAdmin(TranslationAdmin):
+class ProductSubTypeAdmin(TranslationAdmin,ImportExportModelAdmin):
     list_display=("pk","SubType",)
     list_display_links=("pk",)
     list_editable=("SubType",)
+    resource_class=ProductSubTypeResource
 
     #def get_model_perms(self, request):
     #    return{}  
@@ -43,14 +76,22 @@ class ProductImageInline(CompactInline):
     model=ProductImage
     exclude = ('height','width')
 
+class ProductImageAdmin(ImportExportModelAdmin):
+    model=ProductImage
+    resource_class=ProductImageResource
+
 class ProductLinkInline(CompactInline):
     model=ProductLink
+
+class ProductLinkAdmin(ImportExportModelAdmin):
+    model=ProductLink
+    resource_class=ProductLinkResource
 
 class ProductReferencesInline(TranslationStackedInline):
     model=ProductReferences
 
 
-class ProductAdmin(TranslationAdmin):
+class ProductAdmin(TranslationAdmin,ImportExportModelAdmin):
     actions = [duplicate_product]
     list_filter = ('Tags','ProductType','ProductSubType','Brand')#,'BuyPrice')
     search_fields = ['ProductName',]
@@ -87,7 +128,10 @@ class ProductAdmin(TranslationAdmin):
             return "--"            
     get_MainProductWeight.short_description="Référence - Poids"
 
+
 admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductBrand,ProductBrandAdmin)
 admin.site.register(ProductType,ProductTypeAdmin)
 admin.site.register(ProductSubType,ProductSubTypeAdmin)
+admin.site.register(ProductImage,ProductImageAdmin)
+admin.site.register(ProductLink,ProductLinkAdmin)
