@@ -34,7 +34,7 @@ INSTALLED_APPS = [
     'jet',
     #'AuthEmail',    
     'django.contrib.admin',
-    #'django.contrib.sites',  
+    'django.contrib.sites',  
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -53,6 +53,11 @@ INSTALLED_APPS = [
     'crispy_forms',
     'import_export',    
     #'registration',    
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +70,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 
 ROOT_URLCONF = 'PetStore.urls'
 
@@ -88,26 +98,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'PetStore.wsgi.application'
 
 # Database
-#DATABASES = {
-#    'default':{
-#        'ENGINE':'django.db.backends.mysql',
-#        'NAME':'tapaloeil$PetStore',
-#        'USER':'tapaloeil',
-#        'PASSWORD':'Mars!2017',
-#        'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
-#    }
-#}
-
-# Database
 DATABASES = {
     'default':{
         'ENGINE':'django.db.backends.mysql',
-        'NAME':'parispetstore$PetStore',
-        'USER':'parispetstore',
+        'NAME':'tapaloeil$PetStore',
+        'USER':'tapaloeil',
         'PASSWORD':'Mars!2017',
-        'HOST':'parispetstore.mysql.pythonanywhere-services.com',
+        'HOST':'tapaloeil.mysql.pythonanywhere-services.com',
     }
 }
+
+# Database
+#DATABASES = {
+#    'default':{
+#        'ENGINE':'django.db.backends.mysql',
+#        'NAME':'parispetstore$PetStore',
+#        'USER':'parispetstore',
+#        'PASSWORD':'Mars!2017',
+#        'HOST':'parispetstore.mysql.pythonanywhere-services.com',
+#    }
+#}
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
