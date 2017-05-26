@@ -129,3 +129,35 @@ THUMBNAIL_HIGH_RESOLUTION = True
 
 #Crispy FORM TAGs SETTINGS
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# AllAuth
+SOCIALACCOUNT_PROVIDERS = \
+    {'facebook':
+       {'METHOD': 'oauth2',
+        'SCOPE': ['email','public_profile', 'user_friends'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time'],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': lambda request: 'kr_KR',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.4'}}
+
+#facebook
+SOCIAL_AUTH_FACEBOOK_KEY = '314280752325587'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET ='07084282cba2309fd9f55ed3bb2803b5' #app key
+
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_UNIQUE_EMAIL=True
+ACCOUNT_USERNAME_REQUIRED=False
+ACCOUNT_AUTHENTICATION_METHOD="email"

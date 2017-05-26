@@ -22,7 +22,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 ALLOWED_HOSTS = ['*']
 SECRET_KEY = '9mzj3@i%b^t2-rjh(%qdhupt=22kcburqyg7agt0(%vozgjxmt'
 SITE_ID=1
-AUTH_USER_MODEL = 'AuthEmail.User'
+#AUTH_USER_MODEL = 'AuthEmail.User'
 
 # Application definition
 INSTALLED_APPS = [
@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'djmoney',
     'braces',
     'jet',
-    'AuthEmail',    
+    #'AuthEmail',    
     'django.contrib.admin',
     #'django.contrib.sites',  
     'django.contrib.auth',
