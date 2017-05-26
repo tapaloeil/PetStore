@@ -61,6 +61,13 @@ class ProductReferences(models.Model):
         blank=True,
         null=True,
         verbose_name='Prix de vente (€)')
+    SellPriceRMB=models.DecimalField(
+        default=0,
+        max_digits=10,
+        decimal_places=2, 
+        blank=True,
+        null=True,
+        verbose_name='Prix de vente (RMB)')
     MeasureUnitChoice =(
             ('g','g'),
             ('kg','kg'),
