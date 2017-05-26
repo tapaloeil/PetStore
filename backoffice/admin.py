@@ -52,8 +52,8 @@ class ProductBrandAdmin(ImportExportModelAdmin):#(admin.ModelAdmin):
     list_editable=("Name","OriginCountry","URL")
     resource_class=ProductBrandResource
 
-    #def get_model_perms(self, request):
-    #    return{}  
+    def get_model_perms(self, request):
+        return{}  
 
 class ProductTypeAdmin(TranslationAdmin,ImportExportModelAdmin):
     list_display=("pk","Type",)
@@ -61,8 +61,8 @@ class ProductTypeAdmin(TranslationAdmin,ImportExportModelAdmin):
     list_editable=("Type",)
     resource_class=ProductTypeResource
 
-    #def get_model_perms(self, request):
-    #    return{}    
+    def get_model_perms(self, request):
+        return{}    
 
 class ProductSubTypeAdmin(TranslationAdmin,ImportExportModelAdmin):
     list_display=("pk","SubType",)
@@ -70,8 +70,8 @@ class ProductSubTypeAdmin(TranslationAdmin,ImportExportModelAdmin):
     list_editable=("SubType",)
     resource_class=ProductSubTypeResource
 
-    #def get_model_perms(self, request):
-    #    return{}  
+    def get_model_perms(self, request):
+        return{}  
 
 class ProductImageInline(CompactInline):
     model=ProductImage
@@ -137,6 +137,6 @@ admin.site.register(Product, ProductAdmin)
 admin.site.register(ProductBrand,ProductBrandAdmin)
 admin.site.register(ProductType,ProductTypeAdmin)
 admin.site.register(ProductSubType,ProductSubTypeAdmin)
-admin.site.register(ProductImage,ProductImageAdmin)
-admin.site.register(ProductLink,ProductLinkAdmin)
-admin.site.register(ProductReferences,ProductReferencesAdmin)
+#admin.site.register(ProductImage,ProductImageAdmin)
+#admin.site.register(ProductLink,ProductLinkAdmin)
+#admin.site.register(ProductReferences,ProductReferencesAdmin)
