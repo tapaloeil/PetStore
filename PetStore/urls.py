@@ -31,22 +31,14 @@ from django.contrib.auth.views import (
 admin.site.site_header='PetStore Administration'
 admin.site.site_title='PetStore Administration'
 
-urlpatterns = i18n_patterns(
-    #url(r'^accounts/login/$', views.login, {'template_name': 'registration/c_login.html'}, name="login"),
-    #url(r'^accounts/registering/$', RegistrationView.as_view(),{'template_name' : 'registration/c_registration_form.html'}, name="registration_register"),
-    #url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),  
-    #url(r'^accounts/password/reset/$', views.password_reset, {'template_name': 'registration/custom_password_reset_form.html'}, name="password_reset"),
-    #url(r'^accounts/password/reset/done/$', password_reset_done,{'template_name': 'registration/custom_password_reset_done.html'}, name="password_reset_done"),
-    #url(r'^accounts/password/reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', password_reset_confirm, {'template_name': 'registration/custom_password_reset_confirm.html'}, name="password_reset_confirm"),
-    #url(r'^accounts/password/done/$', password_reset_complete, {'template_name': 'registration/custom_password_reset_complete.html'}, name="password_reset_complete"),
-    #url(r'^accounts/',include('registration.backends.default.urls')),  
+urlpatterns = i18n_patterns( 
     url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
     url(r'^admin/', admin.site.urls,name='admin'),
     url(r'', include('backoffice.urls')),
+    url(r'^cart/', include('cartsystem.urls')),
     url(r'^tinymce/',include('tinymce.urls')),
     url(r'^rosetta/',include('rosetta.urls')),
     url(r'^accounts/', include('allauth.urls')),
-    #url(r'^accounts/',include('registration.backends.default.urls')), 
 )
 
 if settings.DEBUG:
