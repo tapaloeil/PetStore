@@ -60,12 +60,19 @@
                             <div class="product-cart-ref">{{ item.product_ref.Ref }}</div>
                         </td>
                         <td class="product-cart-price"><h4>￥ {{ item.product_ref.SellPriceRMB }}</h4></td>
-                        <td class="product-cart-actions"><h4>{{ item.quantity }}</h4></td>
+                        <td class="product-cart-actions container-buttons-increments">
+                            <div class="qty-wrapper2">
+                                <span class="decrement_qty"></span>
+                                <!--<h4>{{ item.quantity }}</h4>-->
+                                <input type="text" value="{{ item.quantity }}" size="4" pattern="\d*" title="Qté" class="input-text qty" maxlength="12" data-cart-item-id="{{ item.id }}">
+                                <span class="increment_qty"></span>
+                            </div>
+                        </td>
                         <td class="product-cart-total"><h4>￥ {{ item.total_price }}</h4></td>
                         <td class="a-center product-cart-remove">
                             <a href="{% url 'remove_from_cart' product_ref_id=item.product_ref.id %}" class="btn-remove-nodisplay"></a>
                         </td>
-                    </tr>        
+                    </tr>
                 {% endfor %}
                 </tbody>
             </table>

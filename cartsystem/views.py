@@ -14,7 +14,7 @@ def remove_from_cart(request, product_ref_id):
     product_ref=ProductReferences.objects.get(id=product_ref_id)
     cart=Cart(request)
     cart.remove(product_ref)
-    return HttpResponse('')
+    return redirect('cartsytem.views.get_cart')
 
 def get_chart(request):
     return render(request, "cartsystem/cart.html", dict(cart=Cart(request)))

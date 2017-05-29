@@ -169,6 +169,10 @@
 	display: block;
 }
 
+td.qty{
+        min-width: 105px;
+}
+
 @media only screen and (min-width: 771px){}
 	.gallery .product-name {
 	    display: none;

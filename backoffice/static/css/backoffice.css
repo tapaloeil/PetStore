@@ -833,6 +833,70 @@ ol.checkout-progress li + li:before{
   color:#ee1051;
 }
 
+.cart-table .product-cart-actions {
+    min-width: 60px;
+    text-align: center;
+    padding-left: 15px;
+}
+
+.decrement_qty,  .increment_qty {
+    display: inline-block;
+    /*width: 30px;
+    height: 38px;
+    font-size: 14px;
+    line-height: 38px;*/
+    color: #ee1051;
+    /*text-align: center;*/
+    cursor: pointer;
+}
+
+.container-buttons-increments {
+    white-space: nowrap;
+}
+
+.decrement_qty:before {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;  
+    content: "\ea0b";
+}
+
+.increment_qty:before {
+    font-family: 'icomoon';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    vertical-align: middle;
+    -webkit-font-smoothing: antialiased;  
+    content: "\ea0a";
+}
+
+.qty {
+    height: 30px;
+    border-color: #b7b7b7;
+    border-radius: 0;
+    text-align: center;
+    width: 3.2em!important;
+}
+
+span.count{
+position: relative;
+    top: -54px;
+    right: -32px;
+    color: #fff!important;;
+    font-size: 17px;
+    float: left;
+}
+
 @media (min-width: 768px){
   .omb_row-sm-offset-3 div:first-child[class*="col-"] {
       margin-left: 25%;

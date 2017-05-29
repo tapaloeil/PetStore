@@ -6,7 +6,6 @@
 <script type="text/javascript" src="{% static 'js/3rdParty/jquery.ui.core.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/3rdParty/jquery.ui.widget.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/3rdParty/jquery.ui.rcarousel.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/3rdParty/dropzone.js' %}"></script>
     <div class="product-view">
     	<div class="product-essential">
     		<form action="#" method="POST">
@@ -51,7 +50,14 @@
 													{{ ref.SellPrice }}
 												</span>
 											</td>
-											<td class="qty"></td>
+											<td class="qty">
+												<div class="qty-wrapper2">
+					                                <span class="decrement_qty"></span>
+					                                <!--<h4>{{ item.quantity }}</h4>-->
+					                                <input type="number" value=0 title="Qté" class="input-text qty" min=0 max=10 data-cart-item-id="{{ ref.id }}">
+					                                <span class="increment_qty"></span>
+					                            </div>
+											</td>
 										</tr>
 									{% endfor %}
 								</tbody>
@@ -59,7 +65,7 @@
 									<tr class="first last">
 										<td colspan="3" class="last">
 											<div class="add-to-cart-buttons">
-												<button type="button" title="Ajouter au panier" class="button btn-cart"><span>{% trans "Ajouter au panier" %}</span></button>
+												<button id="detail_add_to_cart" type="button" title="Ajouter au panier" class="button btn-cart"><span>{% trans "Ajouter au panier" %}</span></button>
 											</div>
 										</td>
 									</tr>
@@ -80,34 +86,5 @@
 	    	</div>
 	    </div>
     </div>
-		<script type="text/javascript">
-			jQuery(function($) {
-				function selectCarouselImage(iid){
-					$("#image-preview").attr("src",$("#"+iid).attr("src"));
-					$(".wrapper>img").css("border","0");
-					$("#"+iid).css("border","2px solid #00BCD4");
-				}
-				function startCarousel(){
-					$(".wrapper>img").click(function(event) {
-						selectCarouselImage(this.id);
-					});
-					selectCarouselImage($("#carousel .wrapper img")[0].id);
-				}
-
-				if($("#carousel > img").length>0){
-					$( "#carousel" ).rcarousel( {
-						width: 100, 
-						height: 100,
-						step: 1,
-						visible:$("#carousel > img").length,
-						orientation:"horizontal",
-						start: startCarousel
-					});
-				}
-				else
-				{
-					$(".gallery").css("display","none");
-				}
-			});
-		</script>
+	<script type="text/javascript" src="{% static 'js/p_detail.js' %}"></script>
 {% endblock %}
