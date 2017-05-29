@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load admin_urls %}
 {% load socialaccount %}
 {% providers_media_js %}
 <html>
@@ -22,19 +23,25 @@
         {% endblock %} 
     </head>
     <body>
-
         <div class="content container">
         <div class="page-header" id="page-header">
             <div class="iconlist">
+            <a href="{% url 'get_cart' %}" class="top-menu"><span class="icon-cart fs3"></span></a>
             {% if user.is_authenticated %}
                 <a href="/accounts/logout/?next=/" class="top-menu"><span class="icon-switch fs3"></span></a>
                {% if user.is_staff or user.is_superuser %}
-                    <a href="admin/backoffice/product/" class="top-menu"><span class="icon-table2 fs3"></span></a>
-                    <a href="admin/backoffice/product/add/" class="top-menu"><span class="icon-plus fs3"></span></a>
+                    <!--<a href="admin/backoffice/product/" class="top-menu"><span class="icon-table2 fs3"></span></a>-->
+                    <a href="{% url 'admin:backoffice_product_changelist' %}" class="top-menu"><span class="icon-table2 fs3"></span></a>
+                    {% if "product" not in request.get_full_path %}
+                        <a href="{% url 'admin:backoffice_product_add' %}" class="top-menu"><span class="icon-plus fs3"></span></a>
+                    {% else %}
+                        <a href="{% url 'admin:backoffice_product_change' product.pk %}" class="top-menu"><span class="icon-pencil fs3"></span></a>
+                    {% endif %}
                 {% endif %}                
             {% else %}
                 <a href="/accounts/login/?next=/" class="top-menu"><span class="icon-key fs3"></span></a>
             {% endif %}
+
             </div>
             <div id="header-search" class="skip-content">
                 <form id="search_mini_form" action="" method="GET">

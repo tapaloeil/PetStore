@@ -22,10 +22,10 @@ class Cart:
         self.cart=cart
 
     def __iter__(self):
-        for field in models.Cart._meta.get_fields():
-            print(field.name)
+        #for field in models.self._meta.get_fields():
+        #    print(field.name)
         #items=models.CartItem.objects.filter(cart=self)
-        for item in self.cart.CartItem.all():
+        for item in self.cart.cartitem_set.all():
             yield item
 
 
@@ -51,7 +51,7 @@ class Cart:
             item.quantity += int(quantity)
             item.save()
 
-    def remove(self,product):
+    def remove(self,product_ref):
         try:
             item=models.CartItem.objects.get(
                 cart=self.cart,

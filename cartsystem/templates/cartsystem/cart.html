@@ -1,19 +1,74 @@
-
 {% extends 'backoffice/base.html' %}
-
+{% load static %}
+{% load thumbnail %}
+{% load i18n %}
+{% block head %}
+<!--<link type="text/css" rel="stylesheet" href="{% static 'css/registration.css' %}" />-->
+{% endblock %}
 {% block content %}
-    <table>
-        <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Total Price</th>
-        </tr>
-        {% for item in cart %}
-        <tr>
-            <td>{{ item.product_ref.name }}</td>
-            <td>{{ item.quantity }}</td>
-            <td>{{ item.total_price }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="col-sm-12">
+        <div class="row omb_row-sm-offset-3 panier_title">
+            <div class="col-xs-12 col-sm-6">
+                <hr class="hr_panier_title">
+                <span class="span_panier_title">{% trans "Mon Panier" %}</span>
+            </div>
+        </div>
+        <div class="checkout-progress-bar">
+            <ol class="checkout-progress">
+                <li class="checkout-progress-cart first">{% trans "Panier" %}</li>
+                <li class="checkout-progress-login">{% trans "Identification" %}</li>
+                <li class="checkout-progress-address">{% trans "Adresses" %}</li>
+                <li class="checkout-progress-shipping">{% trans "Livraison" %}</li>
+                <li class="checkout-progress-payment last">{% trans "Paiement" %}</li>
+            </ol>
+        </div>
+        <form action="#" method="POST">{% csrf_token %}
+            <table class="cart-table data-table">
+                <thread>
+                    <tr class="first last">
+                        <th rowspan="1">
+                            <span class="nobr">{% trans "Produit" %}</span>
+                        </th>
+                        <th rowspan="1">
+                            &nbsp;
+                        </th>
+                        <th class="a-center cart-price-head" colspan="1">
+                            <span class="nobr">{% trans "Prix" %}</span>
+                        </th>
+                        <th class="a-center" rowspan="1">
+                            <span class="nobr">{% trans "Qté" %}</span>
+                        </th>
+                        </th>
+                        <th class="a-center cart-total-head" colspan="1">
+                            <span class="nobr">{% trans "Sous-total" %}</span>
+                        </th>
+                        <th class="a-center" rowspan="1">
+                            &nbsp;
+                        </th>                       
+                    </tr>
+                </thread>
+                <tbody>
+                {% for item in cart %}
+                    <tr>
+                        <td class="product-cart-image">
+                            {% if item.product_ref.Product.MainPhoto is not None %}
+                              <img class="card-img-top img-responsive shake" src='{% thumbnail item.product_ref.Product.MainPhoto.image 64x64  %}' alt="Card image cap">
+                            {% endif %}
+                        </td>
+                        <td class="product-cart-info">
+                            <h4>{{ item.product_ref.Product.ProductName }}</h4> 
+                            <div class="product-cart-ref">{{ item.product_ref.Ref }}</div>
+                        </td>
+                        <td class="product-cart-price"><h4>￥ {{ item.product_ref.SellPriceRMB }}</h4></td>
+                        <td class="product-cart-actions"><h4>{{ item.quantity }}</h4></td>
+                        <td class="product-cart-total"><h4>￥ {{ item.total_price }}</h4></td>
+                        <td class="a-center product-cart-remove">
+                            <a href="{% url 'remove_from_cart' product_ref_id=item.product_ref.id %}" class="btn-remove-nodisplay"></a>
+                        </td>
+                    </tr>        
+                {% endfor %}
+                </tbody>
+            </table>
+        </form>
+    </div>
 {% endblock %}
