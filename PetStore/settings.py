@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'taggit',
     'rosetta',
     'backoffice',
+    'cartsystem',
     'crispy_forms',
     'import_export',    
     #'registration',    
