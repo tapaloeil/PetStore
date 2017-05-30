@@ -27,8 +27,7 @@
         <div class="page-header" id="page-header">
             <div class="iconlist">
             <a href="{% url 'get_cart' %}" class="top-menu">
-                <span class="icon-cart fs3"></span>
-                <span id="cartcount" class="count"></span>
+                <span class="icon-cart fs3"><span id="cartcount" class="count"></span></span>
             </a>
             {% if user.is_authenticated %}
                 <a href="/accounts/logout/?next=/" class="top-menu"><span class="icon-switch fs3"></span></a>
@@ -62,5 +61,18 @@
         </div>
         {% block footer %}{% endblock footer %}
         <script type="text/javascript" src="{% static 'js/fixscroll.js' %}"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                 $.ajax({
+                    type: 'GET',
+                    url: "{% url 'api_get_cart_count' %}",
+                    dataType: 'json',
+                    data: "{}",
+                    success: function(data){
+                        $("#cartcount").html(data["cartItems"])
+                    }
+                });
+            });
+        </script>
     </body>
 </html>

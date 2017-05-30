@@ -70,7 +70,7 @@
                         </td>
                         <td class="product-cart-total"><h4>￥ {{ item.total_price }}</h4></td>
                         <td class="a-center product-cart-remove">
-                            <a href="{% url 'remove_from_cart' product_ref_id=item.product_ref.id %}" class="btn-remove-nodisplay"></a>
+                            <a href="{% url 'remove_from_cart' item.product_ref.id %}" class="btn-remove-nodisplay"></a>
                         </td>
                     </tr>
                 {% endfor %}

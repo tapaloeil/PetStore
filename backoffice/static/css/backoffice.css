@@ -888,13 +888,13 @@ ol.checkout-progress li + li:before{
     width: 3.2em!important;
 }
 
-span.count{
-position: relative;
-    top: -54px;
-    right: -32px;
-    color: #fff!important;;
+span.count {
+    position: absolute;
+    top: 32px;
+    right: 88px;
+    color: #fff!important;
     font-size: 17px;
-    float: left;
+    /* float: left; */
 }
 
 @media (min-width: 768px){

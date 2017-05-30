@@ -35,7 +35,7 @@ class Cart:
         request.session[CART_ID]=cart.id
         return cart
 
-    def add(self,product_ref,unit_price,quantity=1):
+    def add(self,product_ref,quantity=1):
         try:
             item=models.CartItem.objects.get(
                 cart=self.cart,
@@ -78,16 +78,16 @@ class Cart:
                 item.save()
     def count(self):
         result=0
-        for item in self.cart.CartItem_set.all():
+        for item in self.cart.cartitem_set.all():
             result+=1*item.quantity
         return result
 
     def summary(self):
         result=0
-        for item in self.cart.CartItem_set.all():
+        for item in self.cart.cartitem_set.all():
             result += item.total_price
         return result
 
     def clear(self):
-        for item in self.cart.CartItem_set.all():
+        for item in self.cart.cartitem_set.all():
             item.delete()

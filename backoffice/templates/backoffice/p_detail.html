@@ -6,6 +6,8 @@
 <script type="text/javascript" src="{% static 'js/3rdParty/jquery.ui.core.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/3rdParty/jquery.ui.widget.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/3rdParty/jquery.ui.rcarousel.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/getCookie.js' %}"></script>
+
     <div class="product-view">
     	<div class="product-essential">
     		<form action="#" method="POST">
@@ -65,7 +67,7 @@
 									<tr class="first last">
 										<td colspan="3" class="last">
 											<div class="add-to-cart-buttons">
-												<button id="detail_add_to_cart" type="button" title="Ajouter au panier" class="button btn-cart"><span>{% trans "Ajouter au panier" %}</span></button>
+												<button id="detail_add_to_cart" type="button" title="Ajouter au panier" class="button btn-cart" data-href="{% url 'api_add_to_cart' %}"><span>{% trans "Ajouter au panier" %}</span></button>
 											</div>
 										</td>
 									</tr>
