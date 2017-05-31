@@ -50,3 +50,14 @@ class api_get_cart_count(APIView):
         cart=Cart(request)
         resp='{"cartItems":"' + str(cart.count()) + '"}'
         return Response(json.loads(resp))
+
+class api_sync_cart(APIView):
+    parser_classer=(JSONParser,)
+    def get(self,request,format=None):
+        data=request.GET
+        cart=Cart(request)
+        for product_ref_id, quantity in data.items():
+            product_ref=ProductReferences.objects.get(id=product_ref_id)
+            cart.update(product_ref, quantity)
+        resp='{"cartItems":"' + str(cart.count()) + '"}'
+        return Response(json.loads(resp))

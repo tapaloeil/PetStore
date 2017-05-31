@@ -3,7 +3,6 @@
 {% load thumbnail %}
 {% load i18n %}
 {% block head %}
-<!--<link type="text/css" rel="stylesheet" href="{% static 'css/registration.css' %}" />-->
 {% endblock %}
 {% block content %}
     <div class="col-sm-12">
@@ -22,6 +21,7 @@
                 <li class="checkout-progress-payment last">{% trans "Paiement" %}</li>
             </ol>
         </div>
+        {% if cart.count > 0 %}
         <form action="#" method="POST">{% csrf_token %}
             <table class="cart-table data-table">
                 <thread>
@@ -59,23 +59,50 @@
                             <h4>{{ item.product_ref.Product.ProductName }}</h4> 
                             <div class="product-cart-ref">{{ item.product_ref.Ref }}</div>
                         </td>
-                        <td class="product-cart-price"><h4>￥ {{ item.product_ref.SellPriceRMB }}</h4></td>
+                        <td class="product-cart-price">
+                            <div class="currencySymbol">￥</div>
+                            <h4>{{ item.product_ref.SellPriceRMB }}</h4>
+                        </td>
                         <td class="product-cart-actions container-buttons-increments">
                             <div class="qty-wrapper2">
                                 <span class="decrement_qty"></span>
                                 <!--<h4>{{ item.quantity }}</h4>-->
-                                <input type="text" value="{{ item.quantity }}" size="4" pattern="\d*" title="Qté" class="input-text qty" maxlength="12" data-cart-item-id="{{ item.id }}">
+                                <input type="number" value={{ item.quantity }} title="Qté" class="input-text qty" min=0 max=99 data-cart-item-id="{{ item.product_ref.id }}">
+                                <!--<input type="text" value="{{ item.quantity }}" size="4" pattern="\d*" title="Qté" class="input-text qty" maxlength="12" data-cart-item-id="{{ item.product_ref.id }}">-->
                                 <span class="increment_qty"></span>
                             </div>
                         </td>
-                        <td class="product-cart-total"><h4>￥ {{ item.total_price }}</h4></td>
+                        <td class="product-cart-total">
+                            <div class="currencySymbol">￥</div>
+                            <h4>{{ item.total_price }}</h4>
+                        </td>
                         <td class="a-center product-cart-remove">
                             <a href="{% url 'remove_from_cart' item.product_ref.id %}" class="btn-remove-nodisplay"></a>
                         </td>
                     </tr>
                 {% endfor %}
                 </tbody>
+                <tfoot>
+                    <tr class="first last">
+                        <td colspan="3" class="a-right cart-footer-actions">
+                            <a href="{% url 'p_list' %}">{% trans "Continuer mes achats" %}</a>
+                            <a href="#" id="synccart" data-href="{% url 'api_sync_cart' %}">{% trans "Mettre à jour mon panier" %}</a>
+                        </td>
+                        <td class="cart-total-head">
+                            <span class="nobr">{% trans "Total" %}</span>
+                        </td>
+                        <td class="product-cart-total cart-total-price">
+                            <div class="currencySymbol">￥</div>
+                            {{ cart.summary }}
+                        </td>
+                        <td></td>
+                    </tr>
+                </tfoot>
             </table>
         </form>
+        {% else %}
+        <p> {% trans "Votre panier est vide." %} </p>
+        {% endif %}
     </div>
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
 {% endblock %}

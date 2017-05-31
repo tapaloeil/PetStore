@@ -802,7 +802,7 @@ ol.checkout-progress li + li:before{
 }
 
 .cart-table .product-cart-total, .cart-table .product-cart-price {
-    text-align: center;
+    text-align: right;
     color: #ee1051;
 }
 
@@ -888,13 +888,72 @@ ol.checkout-progress li + li:before{
     width: 3.2em!important;
 }
 
-span.count {
+/*span.count {
     position: absolute;
     top: 32px;
     right: 88px;
     color: #fff!important;
     font-size: 17px;
-    /* float: left; */
+}*/
+
+span.count.content{
+    position: absolute;
+    top: 12px;
+    right: 56px;
+    font-size: 20px;
+    background: red;
+    color: white!important;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 22px;
+    border-radius: 50%;
+    box-shadow: 0 0 7px #333;
+    border: 2px solid white;
+    font-weight: 600;
+}
+
+span.count.content.shake {
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-name: verical-slow;
+    animation-timing-function: ease-in-out;
+    backface-visibility: hidden;
+}
+
+.currencySymbol {
+  font-size: 20px;
+  float: left;
+    margin-bottom: .5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.cart-price-head{
+  min-width: 110px;
+}
+
+.cart-total-head{
+  min-width: 110px;
+      background: 0!important;
+    font-family: 'Oswald', sans-serif!important;
+    white-space: nowrap;
+    font-size: 20px;
+    text-align: center;
+    position: relative;
+    vertical-align: top;
+}
+
+.cart-total-price{
+      text-align: right!important;
+    position: relative!important;
+    vertical-align: top!important;
+        font-family: 'Oswald', sans-serif!important;
+    white-space: nowrap;
+    font-size: 20px;
+
 }
 
 @media (min-width: 768px){

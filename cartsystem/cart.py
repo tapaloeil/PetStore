@@ -1,5 +1,6 @@
 import datetime
 from . import models
+import decimal
 
 CART_ID="CART_ID"
 
@@ -83,9 +84,9 @@ class Cart:
         return result
 
     def summary(self):
-        result=0
+        result=decimal.Decimal('0.0')
         for item in self.cart.cartitem_set.all():
-            result += item.total_price
+            result = result + decimal.Decimal(item.total_price())
         return result
 
     def clear(self):

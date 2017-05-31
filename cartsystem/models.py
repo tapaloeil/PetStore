@@ -3,6 +3,7 @@ from backoffice.models import ProductReferences
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import get_language
 from django.contrib.auth.models import User
+from decimal import Decimal
 # Create your models here.
 
 class Cart(models.Model):
@@ -42,4 +43,4 @@ class CartItem(models.Model):
         #return u'%d x %s' % (self.quantity,self.product_ref.Ref)
 
     def total_price(self):
-        return self.quantity * self.product_ref.SellPriceRMB
+        return Decimal(self.quantity * self.product_ref.SellPriceRMB)
