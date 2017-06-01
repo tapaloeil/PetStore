@@ -11,6 +11,9 @@ import json
 #from django.views.decorators.csrf import ensure_csrf_cookie
 #from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
+
+
+
 def add_to_cart(request, product_ref_id, quantity):
     product_ref=ProductReferences.objects.get(id=product_ref_id)
     cart=Cart(request)
@@ -58,6 +61,9 @@ class api_sync_cart(APIView):
         cart=Cart(request)
         for product_ref_id, quantity in data.items():
             product_ref=ProductReferences.objects.get(id=product_ref_id)
-            cart.update(product_ref, quantity)
+            if int(quantity) == 0:
+                remove_from_cart(request, product_ref_id)
+            else:
+                cart.update(product_ref, quantity)
         resp='{"cartItems":"' + str(cart.count()) + '"}'
         return Response(json.loads(resp))

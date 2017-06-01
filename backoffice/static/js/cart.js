@@ -4,9 +4,10 @@ jQuery(function($) {
 		var addURL=this_.attr("data-href");
 		qty="{";
 		$("input.qty").each(function(index, el) {
-			if(el.value>0){
+			if(context=="detail" && el.value>0)
 				qty+='"' + el.dataset["cartItemId"] + '":"' + el.value +'",';
-			}
+			if(context=="cart")
+				qty+='"' + el.dataset["cartItemId"] + '":"' + el.value +'",';
 		});
 		qty = qty.substring(0, qty.length - 1);
 		qty+="}";

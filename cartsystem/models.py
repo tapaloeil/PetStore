@@ -2,6 +2,7 @@ from django.db import models
 from backoffice.models import ProductReferences
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import get_language
+from django.conf import settings
 from django.contrib.auth.models import User
 from decimal import Decimal
 # Create your models here.
@@ -10,6 +11,7 @@ class Cart(models.Model):
     creation_date=models.DateTimeField(verbose_name=_("creation date"))
     checked_out=models.BooleanField(default=False,verbose_name=_("checked out ?"))
     locale = models.CharField(max_length=10,default=get_language())
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
 
     class Meta:
         verbose_name=_("cart")
