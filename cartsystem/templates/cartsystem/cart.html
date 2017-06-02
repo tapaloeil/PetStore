@@ -103,7 +103,7 @@
                 <button type="button" class="btn  btn-outline-warning"  id="synccart" data-href="{% url 'api_sync_cart' %}">{% trans "Mettre à jour mon panier" %}</button>
                 <!--<a href="#" id="synccart" data-href="{% url 'api_sync_cart' %}">{% trans "Mettre à jour mon panier" %}</a>-->
                 <div class="cartValidate">
-                    <button type="button" class="btn btn-lg btn-success">{% trans "Valider mon panier" %}</button>
+                    <a href="{% url 'checkout_validate_cart' %}"><button type="button" class="btn btn-lg btn-success">{% trans "Valider mon panier" %}</button></a>
                 </div>
             </div>
         </form>

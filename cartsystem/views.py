@@ -30,6 +30,10 @@ def get_chart(request):
     return render(request, "cartsystem/cart.html", dict(cart=Cart(request)))
 
 
+def checkout_validate_cart(request):
+    return render(request, "cartsystem/cart.html", dict(cart=Cart(request)))
+
+
 class api_add_to_cart(APIView):
     parser_classes=(JSONParser,)
     def get(self, request, format=None):
